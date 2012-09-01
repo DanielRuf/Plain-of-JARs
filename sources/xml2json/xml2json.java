@@ -7,31 +7,28 @@ import java.io.IOException;
 import java.io.*;
 import java.io.File;
 import java.io.FileInputStream;
-public class xml2json {
+public class xml2json {  
   public static void main(String args[]) throws Exception {
     String path2 = System.getProperty("user.dir");
-    //File directory = new File(path2);
-    File directory = new File(path2 + "/xml");
-    File directory_json = new File(path2 + "/json"); 
-    if (!directory_json.exists())
-    {
-      directory_json.mkdir();
-    }     
+    File directory = new File(path2);   
     File[] myarray;  
+    
     myarray=directory.listFiles();
     for (int j = 0; j < myarray.length; j++)
     {
-      File path=myarray[j];
-      String path_current = path.toString();      
-      String content = readLines(path_current); 
-      JSONObject jsonObject = XML.toJSONObject(content);
-      String json_data = jsonObject.toString(1);
-      int index = path.getName().lastIndexOf('.');
-      String filename = path.getName().substring(0, index);  
-      FileWriter fstream = new FileWriter(directory_json + "/"+filename+".xml.json");
-      BufferedWriter out = new BufferedWriter(fstream);
-      out.write(json_data);
-      out.close();
+      if (myarray[j].isFile() && myarray[j].toString().endsWith(".xml")) {
+        File path=myarray[j];
+        String path_current = path.toString();      
+        String content = readLines(path_current); 
+        JSONObject jsonObject = XML.toJSONObject(content);
+        String json_data = jsonObject.toString(1);
+        int index = path.getName().lastIndexOf('.');
+        String filename = path.getName().substring(0, index);  
+        FileWriter fstream = new FileWriter(path2 + "/"+filename+".xml.json");
+        BufferedWriter out = new BufferedWriter(fstream);
+        out.write(json_data);
+        out.close();
+      }
     }
   }
   public static String readLines(String aFile) throws IOException {
