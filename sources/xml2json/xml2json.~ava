@@ -13,12 +13,12 @@ public class xml2json {
     String path2 = ".";
     File directory = new File(path2);   
     File[] myarray;  
-    
-    myarray=directory.listFiles(new FilenameFilter() {
+    FilenameFilter filter = new FilenameFilter() {
       public boolean accept(File dir, String name) {
         return name.endsWith(".xml");
       }
-    });
+    };
+    myarray=directory.listFiles(filter);
     System.out.println("Found " + myarray.length + " file(s)");
     for (int j = 0; j < myarray.length; j++)
     { 

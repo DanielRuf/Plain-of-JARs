@@ -9,27 +9,33 @@ import java.io.File;
 import java.io.FileInputStream;
 public class csv2json {
   public static void main(String args[]) throws Exception {
-    String path2 = System.getProperty("user.dir");
+    String path2 = ".";
     File directory = new File(path2);    
     File[] myarray;  
     
-    myarray=directory.listFiles();
+    myarray=directory.listFiles(new FilenameFilter() {
+      public boolean accept(File dir, String name) {
+        return name.endsWith(".csv");
+      }
+    });
+    System.out.println("Found " + myarray.length + " file(s)");
     for (int j = 0; j < myarray.length; j++)
     {
-      if (myarray[j].isFile() && myarray[j].toString().endsWith(".csv")) {
-        File path=myarray[j];
-        String path_current = path.toString();      
-        String content = readLines(path_current); 
-        JSONArray jsonObject = CDL.toJSONArray(content);
-        String json_data = jsonObject.toString(1);
-        int index = path.getName().lastIndexOf('.');
-        String filename = path.getName().substring(0, index);  
-        FileWriter fstream = new FileWriter(path2 + "/"+filename+".csv.json");
-        BufferedWriter out = new BufferedWriter(fstream);
-        out.write(json_data);
-        out.close();
-      }
+      int file_number = j+1;
+      System.out.println("Processing file " + file_number + " of " + myarray.length);
+      File path=myarray[j];
+      String path_current = path.toString();      
+      String content = readLines(path_current); 
+      JSONArray jsonObject = CDL.toJSONArray(content);
+      String json_data = jsonObject.toString(1);
+      int index = path.getName().lastIndexOf('.');
+      String filename = path.getName().substring(0, index);  
+      FileWriter fstream = new FileWriter(path2 + "/"+filename+".csv.json");
+      BufferedWriter out = new BufferedWriter(fstream);
+      out.write(json_data);
+      out.close();
     }
+    System.out.println("Done");
   }
   public static String readLines(String aFile) throws IOException {
     StringBuilder contents = new StringBuilder();
