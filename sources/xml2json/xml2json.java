@@ -3,7 +3,6 @@ import org.json.JSONObject;
 import org.json.XML;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.*;
 import java.io.File;
@@ -14,9 +13,9 @@ public class xml2json {
     File directory = new File(path2);   
     File[] myarray;  
     
-    myarray=directory.listFiles(new FilenameFilter() {
-      public boolean accept(File dir, String name) {
-        return name.endsWith(".xml");
+    myarray=directory.listFiles(new FileFilter() {
+      public boolean accept(File dir) {
+        return dir.toString().endsWith(".xml") && dir.isFile();
       }
     });
     System.out.println("Found " + myarray.length + " file(s)");

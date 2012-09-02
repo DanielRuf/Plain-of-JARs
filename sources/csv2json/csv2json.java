@@ -13,9 +13,9 @@ public class csv2json {
     File directory = new File(path2);    
     File[] myarray;  
     
-    myarray=directory.listFiles(new FilenameFilter() {
-      public boolean accept(File dir, String name) {
-        return name.endsWith(".csv");
+    myarray=directory.listFiles(new FileFilter() {
+      public boolean accept(File dir) {
+        return dir.toString().endsWith(".csv") && dir.isFile();
       }
     });
     System.out.println("Found " + myarray.length + " file(s)");
