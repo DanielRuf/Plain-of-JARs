@@ -1,11 +1,11 @@
-csv2json
+CSV2JSON 1.1.0
 =================
 
-Converts all files in the csv directory to well formed json files.
+Converts all CSV files to well formed JSON files.
 
 
 
-xml2json
+XML2JSON 1.1.0
 =================
 
-Converts all files in the xml directory to well formed json files.
+Converts all XML files to well formed JSON files.

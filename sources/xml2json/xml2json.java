@@ -1,3 +1,11 @@
+/**
+  *
+  * XML2JSON
+  *
+  * @version 1.1.0 vom 07.09.2012
+  * @Daniel Ruf 
+  */
+
 import org.json.JSONException;                    
 import org.json.JSONObject;
 import org.json.XML;
@@ -12,7 +20,9 @@ public class xml2json {
     String path2 = ".";
     File directory = new File(path2);   
     File[] myarray;  
-    
+    String version = "1.1.0";
+    String program = "XML2JSON";
+    System.out.println(program + " " + version );
     myarray=directory.listFiles(new FileFilter() {
       public boolean accept(File dir) {
         return dir.toString().endsWith(".xml") && dir.isFile();
