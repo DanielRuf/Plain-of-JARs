@@ -2,7 +2,7 @@
   *
   * XML2JSON
   *
-  * @version 1.1.0 vom 07.09.2012
+  * @version 1.1.1 vom 13.09.2012
   * @Daniel Ruf 
   */
 
@@ -20,7 +20,7 @@ public class xml2json {
     String path2 = ".";
     File directory = new File(path2);   
     File[] myarray;  
-    String version = "1.1.0";
+    String version = "1.1.1";
     String program = "XML2JSON";
     System.out.println(program + " " + version );
     myarray=directory.listFiles(new FileFilter() {
@@ -29,10 +29,11 @@ public class xml2json {
       }
     });
     System.out.println("Found " + myarray.length + " file(s)");
+    
     for (int j = 0; j < myarray.length; j++)
     { 
       int file_number = j+1;
-      System.out.println("Processing file " + file_number + " of " + myarray.length);
+      System.out.print("\rProcessing file " + file_number + " of " + myarray.length);
       File path=myarray[j];
       String path_current = path.toString();      
       String content = readLines(path_current); 
@@ -45,6 +46,7 @@ public class xml2json {
       out.write(json_data);
       out.close();
     }
+    System.out.println("");
     System.out.println("Done");
   }
   public static String readLines(String aFile) throws IOException {
