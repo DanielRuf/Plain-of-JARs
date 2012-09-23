@@ -5,7 +5,7 @@
   * @version 1.1.1 vom 13.09.2012
   * @Daniel Ruf 
   */
-  
+package org.json;
 import org.json.CDL;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,6 +45,7 @@ public class csv2json {
       out.write(json_data);
       out.close();
     }
+    System.out.println("");
     System.out.println("Done");
   }
   public static String readLines(String aFile) throws IOException {

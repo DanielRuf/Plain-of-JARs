@@ -5,7 +5,6 @@
   * @version 1.1.1 vom 13.09.2012
   * @Daniel Ruf 
   */
-
 import org.json.JSONException;                    
 import org.json.JSONObject;
 import org.json.XML;
