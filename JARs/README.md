@@ -12,7 +12,7 @@ Converts all XML files to well formed JSON files.
 
 
 
-![MP3SHUFFLE](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) MP3SHUFFLE 1.0.1
+![MP3SHUFFLE](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) MP3SHUFFLE 1.0.2
 =================
 
 Shuffle all MP3 files for mp3 players without any display and shuffle function.
