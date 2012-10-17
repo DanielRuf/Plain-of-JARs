@@ -2,7 +2,7 @@
   *
   * MP3SHUFFLE
   *
-  * @version 1.0.1 vom 17.10.2012
+  * @version 1.0.2 vom 17.10.2012
   * @Daniel Ruf 
   */
 import java.io.IOException;
@@ -16,7 +16,7 @@ public class mp3shuffle {
     String path2 = ".";
     File directory = new File(path2);    
     File[] myarray;
-    String version = "1.0.1";
+    String version = "1.0.2";
     String program = "MP3SHUFFLE";  
     System.out.println(program + " " + version );
     myarray=directory.listFiles(new FileFilter() {
@@ -30,14 +30,14 @@ public class mp3shuffle {
     {
       numbers.add(i+1);
     }
-    Collections.shuffle(numbers);
+    Collections.shuffle(numbers); 
     for (int j = 0; j < myarray.length; j++)
     {
       int file_number = j+1;
       System.out.print("\rProcessing file " + file_number + " of " + myarray.length);
       File path=myarray[j];
       String path_current = path.toString();  
-      int timestamp = (int) (System.currentTimeMillis() /1000L);  
+      int timestamp = (int) (System.currentTimeMillis());      
       String new_filename = numbers.get(j) + "_" + timestamp + ".mp3"; 
       path.renameTo(new File (new_filename));  
     }
