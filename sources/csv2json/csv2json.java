@@ -35,8 +35,8 @@ public class csv2json {
       File path=myarray[j];
       String path_current = path.toString();      
       String content = readLines(path_current); 
-      JSONArray jsonObject = CDL.toJSONArray(content);
-      String json_data = jsonObject.toString(1);
+      JSONArray jsonObject = CDL.toJSONArray(content);    
+      String json_data = jsonObject.toString(1); 
       int index = path.getName().lastIndexOf('.');
       String filename = path.getName().substring(0, index);  
       FileWriter fstream = new FileWriter(path2 + "/"+filename+".csv.json");
