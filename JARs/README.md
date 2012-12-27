@@ -17,3 +17,10 @@ Converts all XML files to well formed JSON files.
 
 Shuffle all MP3 files for mp3 players without any display and shuffle function.
 
+
+
+![TXT2QRCODE](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) TXT2QRCODE 1.0.0
+=================
+
+Converts all TXT files to QRCode images.
+

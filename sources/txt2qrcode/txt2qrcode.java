@@ -21,7 +21,7 @@ import com.google.zxing.FormatException;
 import com.google.zxing.qrcode.decoder.*;        
 public class txt2qrcode {
   public static void main(String[] args) throws Exception{      
-    String path2 = ".";
+    String path2 = ".";    
     File directory = new File(path2);    
     File[] myarray;
     String version = "1.0.0";
@@ -39,7 +39,7 @@ public class txt2qrcode {
       System.out.print("\rProcessing file " + file_number + " of " + myarray.length);
       File path=myarray[j];
       String path_current = path.toString();      
-      String content = readLines(path_current); 
+      String content = readLines(path_current);     
       int index = path.getName().lastIndexOf('.');
       String filename = path.getName().substring(0, index);
       QRCodeWriter writer = new QRCodeWriter();
