@@ -19,8 +19,14 @@ Shuffle all MP3 files for mp3 players without any display and shuffle function.
 
 
 
-![TXT2QRCODE](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) TXT2QRCODE 1.0.0
+![TXT2QRCode](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) TXT2QRCode 1.0.0
 =================
 
 Converts all TXT files to QRCode images.
+
+
+![ImageSequence2JSMovie](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) ImageSequence2JSMovie 1.0.0
+=================
+
+Converts an imagesequence of JPEG files to JSMovie project.
 
