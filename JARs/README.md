@@ -30,3 +30,9 @@ Converts all TXT files to QRCode images.
 
 Converts an imagesequence of JPEG files to JSMovie project.
 
+
+![File2Base64](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) File2Base64 1.0.0
+=================
+
+Converts files to base64 strings.
+

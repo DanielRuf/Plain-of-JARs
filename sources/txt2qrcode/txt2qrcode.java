@@ -5,13 +5,7 @@
   * @version 1.0.0 vom 26.12.2012
   * @Daniel Ruf 
   */
-import java.io.File;
-import java.io.OutputStream;
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.*;
-import java.io.FileInputStream;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
@@ -57,7 +51,7 @@ public class txt2qrcode {
     System.out.println("Done");
   }
   public static String readLines(String aFile) throws IOException {
-    StringBuilder contents = new StringBuilder();
+    StringBuilder contents = new StringBuilder();    
     try {
       BufferedReader input =  new BufferedReader(new FileReader(aFile));
       try {

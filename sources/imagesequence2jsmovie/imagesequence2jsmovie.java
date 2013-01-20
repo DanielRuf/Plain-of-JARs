@@ -5,18 +5,9 @@
   * @version 1.0.0 vom 01.01.2013
   * @Daniel Ruf 
   */
-import java.io.File;
-import java.io.OutputStream;
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.FileReader;
-
 import java.awt.image.BufferedImage;
-import java.io.File;
 import javax.imageio.ImageIO;
-
-import java.io.*;
-import java.io.FileInputStream;        
+import java.io.*;       
 public class imagesequence2jsmovie {
   public static void main(String[] args) throws Exception{      
     String path2 = ".";    
