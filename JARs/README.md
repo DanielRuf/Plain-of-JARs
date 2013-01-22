@@ -1,3 +1,10 @@
+Usage
+=================
+
+Put the JAR file into a directory next to the files (MP3, XML, CSV, TXT, JPG, *) and run `java -jar jarfile.jar`.
+
+
+
 ![CSV2JSON](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) CSV2JSON 1.1.1
 =================
 
