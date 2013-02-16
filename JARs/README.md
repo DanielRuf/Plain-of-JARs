@@ -32,14 +32,38 @@ Shuffle all MP3 files for mp3 players without any display and shuffle function.
 Converts all TXT files to QRCode images.
 
 
+
 ![ImageSequence2JSMovie](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) ImageSequence2JSMovie 1.0.0
 =================
 
 Converts an imagesequence of JPEG files to JSMovie project.
 
 
+
 ![File2Base64](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) File2Base64 1.0.0
 =================
 
 Converts files to base64 strings.
+
+
+
+![Browsertest](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) Browsertest 1.0.0
+=================
+
+Loads the same URL in many browsers at the same time, good for side-by-side comparison in different browsers. Create one line for each browser with the absolute path to the executable file of the browser.
+
+
+
+![SoundCloudSetDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudSetDownloader 1.0.0
+=================
+
+Downloads the tracks from the all sets of a SoundCloud user.
+
+
+
+![SoundCloudTrackDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudTrackDownloader 1.0.0
+=================
+
+Downloads all tracks from a SoundCloud user, which are (mostly) not in a set.
+
 

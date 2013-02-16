@@ -3,4 +3,4 @@
 
 A collection of useful JAR files.
 
-Please take a look at the README in the JARs directory for further information about the different JAR files. 
+Please take a look at the **README in the JARs directory** for further information about the different JAR files. 
