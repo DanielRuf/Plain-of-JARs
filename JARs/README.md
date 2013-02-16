@@ -57,7 +57,7 @@ Loads the same URL in many browsers at the same time, good for side-by-side comp
 ![SoundCloudSetDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudSetDownloader 1.0.0
 =================
 
-Downloads the tracks from the all sets of a SoundCloud user.
+Downloads all tracks from the sets of a SoundCloud user.
 
 
 
