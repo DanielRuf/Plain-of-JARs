@@ -54,14 +54,14 @@ Loads the same URL in many browsers at the same time, good for side-by-side comp
 
 
 
-![SoundCloudSetDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudSetDownloader 1.0.0
+![SoundCloudSetDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudSetDownloader 1.0.1
 =================
 
 Downloads all tracks from the sets of a SoundCloud user.
 
 
 
-![SoundCloudTrackDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudTrackDownloader 1.0.0
+![SoundCloudTrackDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudTrackDownloader 1.0.1
 =================
 
 Downloads all tracks from a SoundCloud user, which are (mostly) not in a set.

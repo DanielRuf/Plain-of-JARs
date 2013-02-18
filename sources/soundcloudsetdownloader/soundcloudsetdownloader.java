@@ -21,16 +21,17 @@ import org.json.JSONException;
   *
   * SoundCloudSetDownloader
   *
-  * @version 1.0.0 vom 15.02.2013
+  * @version 1.0.1 vom 15.02.2013
   * @author 
   */
 
 public class soundcloudsetdownloader {
   public static void main(String[] args) throws Exception {
-    String version = "1.0.0";
+    String version = "1.0.1";
     String program = "SoundCloudSetDownloader";
     System.out.println(program + " " + version );
     String client_id = "b45b1aa10f1ac2941910a7f0d10f8e28";
+    int file_number = 0;
     Console console = System.console();
     String username = console.readLine("Please enter the name of the Soundcloud artist: ");
     URLConnection conn3 = new URL("https://api.soundcloud.com/users/"+username+"/playlists.json?client_id="+client_id).openConnection();
@@ -55,6 +56,7 @@ public class soundcloudsetdownloader {
       int j =0;
       while(j<tracks_count)
       { 
+        file_number++;
         String username_soundcloud = tracks.getJSONObject(j).getJSONObject("user").getString("username");  
         String title_track = tracks.getJSONObject(j).getString("title");
         int id = tracks.getJSONObject(j).getInt("id");
@@ -68,7 +70,7 @@ public class soundcloudsetdownloader {
         //int file_size = conn.getContentLength();
         String content_length= conn.getHeaderField( "content-length" );
         InputStream is = conn.getInputStream();
-        OutputStream outstream = new FileOutputStream(new File(""+username_soundcloud+" - "+playlist_name+" - "+title_track+".mp3"));
+        OutputStream outstream = new FileOutputStream(new File(file_number+"_"+username_soundcloud+" - "+playlist_name+" - "+title_track+".mp3"));
         long fileSize = Long.valueOf(content_length).longValue();
         long bytesRead = 0;
         int percentage = -1;
