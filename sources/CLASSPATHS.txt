@@ -1,0 +1,13 @@
+*.class
+com/google/zxing/*.class
+com/google/zxing/client/j2se/*.class
+com/google/zxing/common/*.class
+com/google/zxing/qrcode/*.class
+com/google/zxing/qrcode/decoder/*.class
+com/google/zxing/qrcode/encoder/*.class
+com/google/zxing/common/reedsolomon/*.class
+jar_files/*
+org/apache/commons/codec/*.class
+org/apache/commons/codec/binary/*.class
+org/json/*.class
+com/mpatric/mp3agic/*.class
