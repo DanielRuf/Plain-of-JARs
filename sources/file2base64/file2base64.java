@@ -5,7 +5,13 @@
   * @version 1.0.0 vom 20.01.2013
   * @Daniel Ruf 
   */
-import java.io.*;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.InputStream;
+import java.io.FileInputStream;
+import java.io.Writer;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import org.apache.commons.codec.binary.Base64;
 public class file2base64 {
   public static void main(String[] args) throws Exception{

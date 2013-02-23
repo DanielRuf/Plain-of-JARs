@@ -6,14 +6,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
-import java.lang.String.*;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.*;
 import java.io.File;
-import java.io.IOException;
 import java.io.Console;
 import java.net.URL;
+import java.net.URLConnection;
+import java.net.HttpURLConnection;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
@@ -122,4 +119,4 @@ public class soundcloudsetdownloader {
     System.out.println("");
     System.out.println("Done"); 
   } // end of main
-} // end of class soundcloud
+} // end of class soundcloudsetdownloader

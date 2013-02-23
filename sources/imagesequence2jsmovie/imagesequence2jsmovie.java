@@ -7,7 +7,16 @@
   */
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
-import java.io.*;       
+import java.io.IOException;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
 public class imagesequence2jsmovie {
   public static void main(String[] args) throws Exception{      
     String path2 = ".";    

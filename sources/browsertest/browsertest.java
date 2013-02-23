@@ -6,7 +6,9 @@
   * @author 
   */
 import java.util.Scanner;
-import java.io.*; 
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
 public class browsertest {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);

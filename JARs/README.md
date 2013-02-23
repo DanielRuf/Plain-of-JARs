@@ -57,13 +57,20 @@ Loads the same URL in many browsers at the same time, good for side-by-side comp
 ![SoundCloudSetDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudSetDownloader 1.1.0
 =================
 
-Downloads all tracks from the sets of a SoundCloud user.
+Downloads all tracks from the sets of a SoundCloud user, even the tracks which are not downloadable but buyable.
 
 
 
 ![SoundCloudTrackDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudTrackDownloader 1.1.0
 =================
 
-Downloads all tracks from a SoundCloud user, which are (mostly) not in a set.
+Downloads all tracks from a SoundCloud user, which are (mostly) not in a set and even not downloadable but buyable.
+
+
+
+![SoundSnapDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundSnapDownloader 1.0.0
+=================
+
+Downloads the SoundSnap tracks using the IDs from a file.
 
 

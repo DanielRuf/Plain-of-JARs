@@ -5,14 +5,17 @@
   * @version 1.0.0 vom 26.12.2012
   * @Daniel Ruf 
   */
-import java.io.*;
+import java.io.IOException;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
-import com.google.zxing.FormatException;
-import com.google.zxing.qrcode.decoder.*;        
+import com.google.zxing.FormatException;       
 public class txt2qrcode {
   public static void main(String[] args) throws Exception{      
     String path2 = ".";    

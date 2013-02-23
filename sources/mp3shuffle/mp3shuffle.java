@@ -5,7 +5,8 @@
   * @version 1.1.0 vom 25.10.2012
   * @Daniel Ruf 
   */
-import java.io.*;
+import java.io.File;
+import java.io.FileFilter;
 import java.util.Collections;
 import java.util.UUID;
 import java.util.ArrayList;
