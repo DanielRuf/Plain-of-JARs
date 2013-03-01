@@ -3,7 +3,7 @@
   * MP3SHUFFLE
   *
   * @version 1.1.0 vom 25.10.2012
-  * @Daniel Ruf 
+  * @author Daniel Ruf 
   */
 import java.io.File;
 import java.io.FileFilter;

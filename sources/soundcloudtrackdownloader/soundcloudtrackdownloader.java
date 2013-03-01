@@ -27,7 +27,7 @@ import com.mpatric.mp3agic.UnsupportedTagException;
   * SoundCloudTrackDownloader
   *
   * @version 1.1.0 vom 20.02.2013
-  * @author 
+  * @author Daniel Ruf
   */
 
 public class soundcloudtrackdownloader {

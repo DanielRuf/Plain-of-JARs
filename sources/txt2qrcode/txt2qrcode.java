@@ -3,7 +3,7 @@
   * TXT2QRCode
   *
   * @version 1.0.0 vom 26.12.2012
-  * @Daniel Ruf 
+  * @author Daniel Ruf 
   */
 import java.io.IOException;
 import java.io.File;

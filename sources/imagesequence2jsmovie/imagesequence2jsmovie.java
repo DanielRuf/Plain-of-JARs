@@ -3,7 +3,7 @@
   * ImageSequence2JSMovie
   *
   * @version 1.0.0 vom 01.01.2013
-  * @Daniel Ruf 
+  * @author Daniel Ruf 
   */
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;

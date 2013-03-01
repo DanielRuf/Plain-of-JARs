@@ -3,7 +3,7 @@
   * Browsertest
   *
   * @version 1.0.0 vom 24.01.2013
-  * @author 
+  * @author Daniel Ruf
   */
 import java.util.Scanner;
 import java.io.File;

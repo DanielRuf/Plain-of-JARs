@@ -3,7 +3,7 @@
   * SoundSnapDownloader
   *
   * @version 1.0.0 vom 23.02.2013
-  * @author 
+  * @author Daniel Ruf
   */
 import java.util.Scanner;
 import java.io.File;

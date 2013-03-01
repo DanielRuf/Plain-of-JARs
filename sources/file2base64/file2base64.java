@@ -3,7 +3,7 @@
   * File2Base64
   *
   * @version 1.0.0 vom 20.01.2013
-  * @Daniel Ruf 
+  * @author Daniel Ruf 
   */
 import java.io.File;
 import java.io.FileFilter;
