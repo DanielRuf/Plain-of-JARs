@@ -75,7 +75,7 @@ Downloads the SoundSnap tracks using the IDs from a file.
 
 
 
-![GOG2FTP](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) GOG2FTP 1.0.0
+![GOG2FTP](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) GOG2FTP 1.1.0
 =================
 
 Transfers a valid and fresh edgecast download from GOG.com directly to the FTP server. Please set all values in the properties file.
@@ -93,3 +93,10 @@ Downloads all FontSquirrel fontfacekits.
 =================
 
 Downloads a specific Song from a ReverbNation  artist. The needed data is in the url which is like reverbnation.com/artist/song/songid.
+
+
+
+![URL2FTP](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) URL2FTP 1.0.0
+=================
+
+Transfers valid files like setup files from websites directly to the FTP server. Please set all values in the properties file.
