@@ -100,3 +100,17 @@ Downloads a specific Song from a ReverbNation  artist. The needed data is in the
 =================
 
 Transfers valid files like setup files from websites directly to the FTP server. Please set all values in the properties file.
+
+
+
+![PDF2TXT](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) PDF2TXT 1.0.0
+=================
+
+Converts all TXT files to PDF files.
+
+
+
+![TXT2PDF](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) TXT2PDF 1.0.0
+=================
+
+Converts all PDF files to TXT files.
