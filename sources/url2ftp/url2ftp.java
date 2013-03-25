@@ -14,13 +14,13 @@ import java.util.Properties;
   *
   * URL2FTP
   *
-  * @version 1.0.0 vom 28.02.2013
+  * @version 1.0.1 vom 25.03.2013
   * @author Daniel Ruf
   */
 
 public class url2ftp {
   public static void main(String[] args) throws Exception{
-    String version = "1.0.0";
+    String version = "1.0.1";
     String program = "URL2FTP";
     System.out.println(program + " " + version );
     String dir ="";
@@ -29,8 +29,8 @@ public class url2ftp {
     String server ="";
     String url="";
     Properties prop = new Properties();
-    File browser_file = new File("browsers.txt");
-    try{browser_file.createNewFile();}catch(Exception e){}
+    File files_file = new File("files.txt");
+    try{files_file.createNewFile();}catch(Exception e){}
     try {
       prop.load(new FileInputStream("url2ftp.properties")); 
       dir = prop.getProperty("ftp_directory");

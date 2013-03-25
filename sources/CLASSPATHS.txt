@@ -11,3 +11,9 @@ org/apache/commons/codec/*.class
 org/apache/commons/codec/binary/*.class
 org/json/*.class
 com/mpatric/mp3agic/*.class
+org/apache/commons/codec/*.class
+org/apache/commons/codec/binary/*.class
+org/apache/pdfbox/pdmodel/PDDocument.class
+org/apache/pdfbox/util/PDFTextStripper.class
+org/apache/pdfbox org/apache/commons/logging
+org/apache/fontbox org/apache/pdfbox/pdmodel/PDDocument.class

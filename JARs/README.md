@@ -96,7 +96,7 @@ Downloads a specific Song from a ReverbNation  artist. The needed data is in the
 
 
 
-![URL2FTP](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) URL2FTP 1.0.0
+![URL2FTP](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) URL2FTP 1.0.1
 =================
 
 Transfers valid files like setup files from websites directly to the FTP server. Please set all values in the properties file.
