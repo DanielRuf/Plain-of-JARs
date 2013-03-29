@@ -17,3 +17,8 @@ org/apache/pdfbox/pdmodel/PDDocument.class
 org/apache/pdfbox/util/PDFTextStripper.class
 org/apache/pdfbox org/apache/commons/logging
 org/apache/fontbox org/apache/pdfbox/pdmodel/PDDocument.class
+org/apache/commons/net/io/*.class
+org/apache/commons/net/util/*.class
+org/apache/commons/net/ftp/*.class
+org/apache/commons/net/ftp/parser/*.class
+org/apache/commons/net/*.class
