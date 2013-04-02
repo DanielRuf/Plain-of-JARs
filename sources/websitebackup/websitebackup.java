@@ -3,9 +3,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.IOException;
-import java.io.FileWriter;
-import java.io.BufferedWriter;
-import java.io.File;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URLConnection;
 import java.net.URL;
@@ -21,12 +19,12 @@ import java.util.*;
   *
   * WebsiteBackup
   *
-  * @version 1.0.0 vom 27.03.2013
+  * @version 1.1.0 vom 02.04.2013
   * @author Daniel Ruf
   */
 public class websitebackup {
   public static void main(String[] args) throws Exception{
-    String version = "1.0.0";
+    String version = "1.1.0";
     String program = "WebsiteBackup";
     System.out.println(program + " " + version );
     String dir ="";
@@ -37,6 +35,7 @@ public class websitebackup {
     String db_user ="";
     String db_password ="";
     String db_name ="";
+    String memory_limit ="";
     Properties prop = new Properties();
     try {
       prop.load(new FileInputStream("backup.properties")); 
@@ -48,6 +47,7 @@ public class websitebackup {
       db_user = prop.getProperty("db_user");
       db_password = prop.getProperty("db_password");
       db_name = prop.getProperty("db_name");
+      memory_limit = prop.getProperty("memory_limit");
     } catch (IOException ex) {
       ex.printStackTrace();
     }
@@ -67,6 +67,7 @@ public class websitebackup {
     generated_string = generated_string.replace("#db_user#", db_user);
     generated_string = generated_string.replace("#db_password#", db_password);
     generated_string = generated_string.replace("#db_name#", db_name);
+    generated_string = generated_string.replace("#memory_limit#", memory_limit);
     FileWriter fileWriter = new FileWriter ("backup.php");
     BufferedWriter bufferedWriter = new BufferedWriter (fileWriter);
     bufferedWriter.write (generated_string);
@@ -78,17 +79,20 @@ public class websitebackup {
     System.out.print("\rSetting chmod rights ...");
     client.sendSiteCommand("chmod " + "777" + " backup.php");
     client.sendSiteCommand("chmod " + "777" + " backup");
-    InputStream startBackup = new URL("http://"+server+"/gog/backup.php").openStream();
-    System.out.print("\rWaiting ...             ");
-    while (!backupFinished(server, dir)){
-      Thread.sleep(1000);
+    System.out.print("\rBacking up ...          ");
+    try {
+      InputStream startBackup = new URL("http://"+server+""+dir+"/backup.php").openStream(); 
+      backupFinished(server, dir, username, password);
+      System.out.print("\rDownloading backup ...  ");
+      FileOutputStream fos = new FileOutputStream("backup.zip");
+      client.retrieveFile("backup/backup.zip", fos);
+      fos.close();  
     }
-    System.out.print("\rDownloading ...         ");
-    FileOutputStream fos = new FileOutputStream("backup.zip");
-    client.retrieveFile("backup/backup.zip", fos);
-    fos.close();  
-    fis.close(); 
-    System.out.print("\rCleaning up ...             "); 
+    catch(java.net.SocketException e) {
+      System.out.println("\rPlease set the memory_limit to a higher value and try again");
+    }
+    fis.close();
+    System.out.print("\rCleaning up ...         "); 
     File f = new File("backup.php");
     f.delete();
     client.deleteFile("backup.php");
@@ -106,7 +110,7 @@ public class websitebackup {
     java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
     return s.hasNext() ? s.next() : "";
   }
-  public static boolean backupFinished(String server, String dir) throws Exception{
+  public static boolean backupFinished(String server, String dir, String username, String password) throws Exception{
     try {
       HttpURLConnection conn2 = (HttpURLConnection)new URL("http://"+server+""+dir+"/backup/backup_finished.txt").openConnection();
       int response_code= conn2.getResponseCode();

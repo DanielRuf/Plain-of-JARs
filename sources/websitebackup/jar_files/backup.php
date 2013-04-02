@@ -1,5 +1,5 @@
 <?php
-ini_set('memory_limit','200M');
+ini_set('memory_limit','#memory_limit#');
 ini_set('max_execution_time', 0);
 set_time_limit(0);
 backup_tables("#db_host#","#db_user#","#db_password#","#db_name#");
@@ -80,7 +80,7 @@ function backup_tables($host,$user,$pass,$name,$tables = '*')
 		$result = mysql_query('SELECT * FROM '.$table);
 		$num_fields = mysql_num_fields($result);
 		
-		$return.= 'DROP TABLE '.$table.';';
+		$return.= '-- DROP TABLE '.$table.';';
 		$row2 = mysql_fetch_row(mysql_query('SHOW CREATE TABLE '.$table));
 		$return.= "\n\n".$row2[1].";\n\n";
 		
@@ -104,7 +104,7 @@ function backup_tables($host,$user,$pass,$name,$tables = '*')
 	
 	//save file
 	$handle = fopen('backup.sql','w+');
-	fwrite($handle,$return);
+	fwrite($handle,utf8_encode($return));
 	fclose($handle);
 	if(Zip('./', './backup/backup.zip')){$handle=fopen("backup/backup_finished.txt", 'w+'); fclose($handle);}
 }
