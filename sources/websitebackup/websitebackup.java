@@ -3,28 +3,30 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.IOException;
-import java.io.*;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.URLConnection;
 import java.net.URL;
 import java.util.Properties;
-import org.apache.commons.net.ftp.*;
+import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPConnectionClosedException;
 import org.apache.commons.net.ftp.FTPReply;
-import org.apache.commons.net.util.*;
-import org.apache.commons.net.*;
-import java.util.*;
+import java.net.Authenticator;
+import java.net.PasswordAuthentication;
+import org.apache.commons.net.util.ListenerList;
 /**
   *
   * WebsiteBackup
   *
-  * @version 1.1.0 vom 02.04.2013
+  * @version 1.2.0 vom 03.04.2013
   * @author Daniel Ruf
   */
-public class websitebackup {
+public class websitebackup {   
   public static void main(String[] args) throws Exception{
-    String version = "1.1.0";
+    String version = "1.2.0";
     String program = "WebsiteBackup";
     System.out.println(program + " " + version );
     String dir ="";
@@ -36,6 +38,9 @@ public class websitebackup {
     String db_password ="";
     String db_name ="";
     String memory_limit ="";
+    String public_domain ="";
+    String htpasswd_user = "";
+    String htpasswd_pass = "";  
     Properties prop = new Properties();
     try {
       prop.load(new FileInputStream("backup.properties")); 
@@ -48,9 +53,17 @@ public class websitebackup {
       db_password = prop.getProperty("db_password");
       db_name = prop.getProperty("db_name");
       memory_limit = prop.getProperty("memory_limit");
+      public_domain = prop.getProperty("public_domain");
+      htpasswd_user = prop.getProperty("htpasswd_user");
+      htpasswd_pass = prop.getProperty("htpasswd_pass");
     } catch (IOException ex) {
       ex.printStackTrace();
     }
+    if (htpasswd_user != null && htpasswd_pass != null) {
+      final String htpasswd_user_final = htpasswd_user;
+      final String htpasswd_pass_final = htpasswd_pass;
+        Authenticator.setDefault(new Authenticator() { protected PasswordAuthentication getPasswordAuthentication() { return new PasswordAuthentication(htpasswd_user_final, htpasswd_pass_final.toCharArray()); } });
+    } // end of if
     FTPClient client = new FTPClient();
     InputStream fis = null;
     client.connect(server);
@@ -81,8 +94,8 @@ public class websitebackup {
     client.sendSiteCommand("chmod " + "777" + " backup");
     System.out.print("\rBacking up ...          ");
     try {
-      InputStream startBackup = new URL("http://"+server+""+dir+"/backup.php").openStream(); 
-      backupFinished(server, dir, username, password);
+      InputStream startBackup = new URL("http://"+public_domain+"/backup.php").openStream(); 
+      backupFinished(server, dir, username, password, public_domain);
       System.out.print("\rDownloading backup ...  ");
       FileOutputStream fos = new FileOutputStream("backup.zip");
       client.retrieveFile("backup/backup.zip", fos);
@@ -110,9 +123,9 @@ public class websitebackup {
     java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
     return s.hasNext() ? s.next() : "";
   }
-  public static boolean backupFinished(String server, String dir, String username, String password) throws Exception{
+  public static boolean backupFinished(String server, String dir, String username, String password, String public_domain) throws Exception{
     try {
-      HttpURLConnection conn2 = (HttpURLConnection)new URL("http://"+server+""+dir+"/backup/backup_finished.txt").openConnection();
+      HttpURLConnection conn2 = (HttpURLConnection)new URL("http://"+public_domain+"/backup/backup_finished.txt").openConnection();
       int response_code= conn2.getResponseCode();
       if (response_code == 404 ) {
         return false;

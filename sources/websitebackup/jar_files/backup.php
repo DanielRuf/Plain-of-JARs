@@ -104,7 +104,8 @@ function backup_tables($host,$user,$pass,$name,$tables = '*')
 	
 	//save file
 	$handle = fopen('backup.sql','w+');
-	fwrite($handle,utf8_encode($return));
+	// fwrite($handle,utf8_encode($return));
+	fwrite($handle,utf8_decode($return));
 	fclose($handle);
 	if(Zip('./', './backup/backup.zip')){$handle=fopen("backup/backup_finished.txt", 'w+'); fclose($handle);}
 }
