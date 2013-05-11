@@ -21,12 +21,12 @@ import org.apache.commons.net.util.ListenerList;
   *
   * WebsiteBackup
   *
-  * @version 1.2.0 vom 03.04.2013
+  * @version 1.3.0 vom 07.05.2013
   * @author Daniel Ruf
   */
 public class websitebackup {   
   public static void main(String[] args) throws Exception{
-    String version = "1.2.0";
+    String version = "1.3.0";
     String program = "WebsiteBackup";
     System.out.println(program + " " + version );
     String dir ="";
@@ -40,7 +40,10 @@ public class websitebackup {
     String memory_limit ="";
     String public_domain ="";
     String htpasswd_user = "";
-    String htpasswd_pass = "";  
+    String htpasswd_pass = "";
+    Boolean tar_gz = false;
+    String archive_type = "";
+    String archive_ext = "";  
     Properties prop = new Properties();
     try {
       prop.load(new FileInputStream("backup.properties")); 
@@ -56,15 +59,28 @@ public class websitebackup {
       public_domain = prop.getProperty("public_domain");
       htpasswd_user = prop.getProperty("htpasswd_user");
       htpasswd_pass = prop.getProperty("htpasswd_pass");
+      tar_gz = Boolean.parseBoolean(prop.getProperty("tar_gz"));
     } catch (IOException ex) {
       ex.printStackTrace();
     }
     if (htpasswd_user != null && htpasswd_pass != null) {
       final String htpasswd_user_final = htpasswd_user;
       final String htpasswd_pass_final = htpasswd_pass;
-        Authenticator.setDefault(new Authenticator() { protected PasswordAuthentication getPasswordAuthentication() { return new PasswordAuthentication(htpasswd_user_final, htpasswd_pass_final.toCharArray()); } });
+      Authenticator.setDefault(new Authenticator() { ;
+        protected PasswordAuthentication getPasswordAuthentication() { 
+          return new PasswordAuthentication(htpasswd_user_final, htpasswd_pass_final.toCharArray()); 
+        } 
+      });
     } // end of if
     FTPClient client = new FTPClient();
+    if (tar_gz){
+      archive_type = "tar";
+      archive_ext = ".tar.gz"; 
+    }
+    else {
+      archive_type = "zip";
+      archive_ext = ".zip"; 
+    } // end of if-else
     InputStream fis = null;
     client.connect(server);
     client.login(username, password);
@@ -74,7 +90,7 @@ public class websitebackup {
     //System.out.print(client.getReplyString());
     client.changeWorkingDirectory(dir);
     System.out.print("\rExtracting ...");
-    InputStream generated_file = websitebackup.class.getResourceAsStream("jar_files/backup.php");
+    InputStream generated_file = websitebackup.class.getResourceAsStream("jar_files/backup_"+archive_type+".php");
     String generated_string = convertStreamToString(generated_file);
     generated_string = generated_string.replace("#db_host#", db_host);
     generated_string = generated_string.replace("#db_user#", db_user);
@@ -97,8 +113,8 @@ public class websitebackup {
       InputStream startBackup = new URL("http://"+public_domain+"/backup.php").openStream(); 
       backupFinished(server, dir, username, password, public_domain);
       System.out.print("\rDownloading backup ...  ");
-      FileOutputStream fos = new FileOutputStream("backup.zip");
-      client.retrieveFile("backup/backup.zip", fos);
+      FileOutputStream fos = new FileOutputStream("backup"+archive_ext);
+      client.retrieveFile("backup/backup"+archive_ext, fos);
       fos.close();  
     }
     catch(java.net.SocketException e) {
@@ -110,7 +126,7 @@ public class websitebackup {
     f.delete();
     client.deleteFile("backup.php");
     client.deleteFile("backup.sql");
-    client.deleteFile("backup/backup.zip");
+    client.deleteFile("backup/backup"+archive_ext);
     client.deleteFile("backup/backup_finished.txt");
     client.removeDirectory("backup");
     //client.completePendingCommand();

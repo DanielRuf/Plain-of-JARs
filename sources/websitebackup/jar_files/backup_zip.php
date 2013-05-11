@@ -25,7 +25,7 @@ function Zip($source, $destination)
             $file = str_replace('\\', '/', $file);
 
             // Ignore "." and ".." folders
-            if( in_array(substr($file, strrpos($file, '/')+1), array('.', '..','backup.php','backup')) )
+            if( in_array(substr($file, strrpos($file, '/')+1), array('.', '..','backup.php','backup','backup.tar','backup.zip', 'backup.tar.gz')) )
                 continue;
 
             $file = realpath($file);
@@ -42,9 +42,7 @@ function Zip($source, $destination)
     }
     else if (is_file($source) === true)
     {
-        // $zip->addFromString(iconv('UTF-8', 'CP437', basename($source)), file_get_contents($source));
         $zip->addFromString(basename($source), file_get_contents($source));
-		//$zip->addFile($source, iconv("UTF-8", "CP437",  $source));
     }
 		
    return $zip->close();
