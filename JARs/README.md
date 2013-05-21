@@ -121,3 +121,10 @@ Converts all PDF files to TXT files.
 =================
 
 Makes a full backup (FTP and SQL) of a website and downloads it. Please set all values in the properties file.
+
+
+
+![WebApp](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) WebApp 1.0.0
+=================
+
+WebApp can be used to create a standalone app from a website using JavaFX and a webview. You can also set some settings in the properties file.  I have created the JAR file using `javafxpackager -createjar -nocss2bin -appclass webapp -srcdir . -outdir ../out -outfile webapp.jar`. Before this, I moved the properties file and the JAva file to another directory above the current directory.
