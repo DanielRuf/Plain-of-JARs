@@ -26,20 +26,21 @@ import com.mpatric.mp3agic.UnsupportedTagException;
   *
   * SoundCloudTrackDownloader
   *
-  * @version 1.1.0 vom 20.02.2013
+  * @version 1.1.1 vom 10.06.2013
   * @author Daniel Ruf
   */
 
 public class soundcloudtrackdownloader {
   public static void main(String[] args) throws Exception {
-    String version = "1.1.0";
+    String version = "1.1.1";
     String program = "SoundCloudTrackDownloader";
     System.out.println(program + " " + version );
     String client_id = "b45b1aa10f1ac2941910a7f0d10f8e28";
     int file_number = 0;
     Console console = System.console();
     String username = console.readLine("Please enter the name of the Soundcloud artist: ");
-    URLConnection conn3 = new URL("https://api.soundcloud.com/users/"+username+"/tracks.json?client_id="+client_id).openConnection();
+    //URLConnection conn4 = new URL("https://api.soundcloud.com/users/"+username+".json?client_id="+client_id).openConnection();
+    URLConnection conn3 = new URL("https://api.soundcloud.com/users/"+username+"/tracks.json?limit=200&client_id="+client_id).openConnection();
     InputStream in = conn3.getInputStream();
     InputStreamReader is2 = new InputStreamReader(in);
     StringBuilder sb=new StringBuilder();
@@ -58,6 +59,13 @@ public class soundcloudtrackdownloader {
       file_number++;
       String username_soundcloud = tracks.getJSONObject(i).getJSONObject("user").getString("username");  
       String title_track = tracks.getJSONObject(i).getString("title");
+      String title_track_original = title_track;
+      title_track = title_track.replaceAll("\\\\", "-");
+      title_track = title_track.replaceAll("/", "-");
+      title_track = title_track.replaceAll(":", "-");
+      title_track = title_track.replaceAll("\\?", "");
+      title_track = title_track.replaceAll("'", "");
+      title_track = title_track.replaceAll("\"", "");
       int id = tracks.getJSONObject(i).getInt("id");
       HttpURLConnection con = (HttpURLConnection)(new URL( "https://api.soundcloud.com/tracks/"+id+"/stream?client_id="+client_id+"" ).openConnection());
       con.setInstanceFollowRedirects( false );
@@ -97,10 +105,14 @@ public class soundcloudtrackdownloader {
         mp3file.setId3v2Tag(id3v2Tag);
       }
       id3v2Tag.setArtist(username_soundcloud);
-      id3v2Tag.setTitle(title_track);
+      id3v2Tag.setTitle(title_track_original);
       //id3v2Tag.setAlbum("The Album");
-      id3v2Tag.setYear(tracks.getJSONObject(i).get("release_year").toString());
-      id3v2Tag.setComment(tracks.getJSONObject(i).getString("description"));
+      if (!tracks.getJSONObject(i).isNull("release_year")){
+        id3v2Tag.setYear(tracks.getJSONObject(i).get("release_year").toString());
+      }
+      if (!tracks.getJSONObject(i).isNull("description")){
+        id3v2Tag.setComment(tracks.getJSONObject(i).getString("description"));
+      }
       mp3file.save(mp3_id3filename);
       File file_id3 = new File(mp3_id3filename);
       File old_mp3file = new File(mp3_filename);
