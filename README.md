@@ -7,4 +7,4 @@ Java 7 is required (some JAR files might work also under Java 6).
 
 Please take a look at the **README in the JARs directory** for further information about the different JAR files. 
 
-Some people might want to use a solution like [JARFix for Windows](http://johann.loefflmann.net/en/software/jarfix/index.html) so they do not need the console part with ***cd*** and ***java -jar***
+Some people might want to use a solution like [JARFix for Windows](http://johann.loefflmann.net/en/software/jarfix/index.html) so they do not need the console part with **cd** and **java -jar**
