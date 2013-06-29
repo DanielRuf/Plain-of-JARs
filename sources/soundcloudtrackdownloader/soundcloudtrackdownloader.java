@@ -26,13 +26,13 @@ import com.mpatric.mp3agic.UnsupportedTagException;
   *
   * SoundCloudTrackDownloader
   *
-  * @version 1.2.0 vom 17.06.2013
+  * @version 1.2.1 vom 28.06.2013
   * @author Daniel Ruf
   */
 
 public class soundcloudtrackdownloader {
   public static void main(String[] args) throws Exception {
-    String version = "1.2.0";
+    String version = "1.2.1";
     String program = "SoundCloudTrackDownloader";
     System.out.println(program + " " + version );
     String client_id = "b45b1aa10f1ac2941910a7f0d10f8e28";
@@ -80,6 +80,7 @@ public class soundcloudtrackdownloader {
         title_track = title_track.replaceAll("\\\\", "-");
         title_track = title_track.replaceAll("/", "-");
         title_track = title_track.replaceAll(":", "-");
+        title_track = title_track.replaceAll("\\*", "-");
         title_track = title_track.replaceAll("\\?", "");
         title_track = title_track.replaceAll("'", "");
         title_track = title_track.replaceAll("\"", "");

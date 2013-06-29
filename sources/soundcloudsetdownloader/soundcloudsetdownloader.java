@@ -25,13 +25,13 @@ import com.mpatric.mp3agic.UnsupportedTagException;
   *
   * SoundCloudSetDownloader
   *
-  * @version 1.2.0 vom 17.06.2013
+  * @version 1.2.1 vom 28.06.2013
   * @author Daniel Ruf 
   */
 
 public class soundcloudsetdownloader {
   public static void main(String[] args) throws Exception {
-    String version = "1.2.0";
+    String version = "1.2.1";
     String program = "SoundCloudSetDownloader";
     System.out.println(program + " " + version );
     String client_id = "b45b1aa10f1ac2941910a7f0d10f8e28";
@@ -78,6 +78,7 @@ public class soundcloudsetdownloader {
         playlist_name = playlist_name.replaceAll("\\\\", "-");
         playlist_name = playlist_name.replaceAll("/", "-");
         playlist_name = playlist_name.replaceAll(":", "-");
+        playlist_name = playlist_name.replaceAll("\\*", "-");
         playlist_name = playlist_name.replaceAll("\\?", "");
         playlist_name = playlist_name.replaceAll("'", "");
         playlist_name = playlist_name.replaceAll("\"", "");
@@ -92,6 +93,7 @@ public class soundcloudsetdownloader {
           title_track = title_track.replaceAll("\\\\", "-");
           title_track = title_track.replaceAll("/", "-");
           title_track = title_track.replaceAll(":", "-");
+          title_track = title_track.replaceAll("\\*", "-");
           title_track = title_track.replaceAll("\\?", "");
           title_track = title_track.replaceAll("'", "");
           title_track = title_track.replaceAll("\"", "");
