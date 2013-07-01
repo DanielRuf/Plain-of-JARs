@@ -1,7 +1,7 @@
 /**
  *	jsMovie
- *	@author Burkhardt & Schmidt Medienkommunikation GbR - Richard Burkhardt
- *	@version 1.4.3b
+ *	@author Konsultaner GmbH & Co. KG - Richard Burkhardt
+ *	@version 1.4.4
  *
  *	This is a jQuery-plugin for jQuery 1.4+ (tested). This plugin enables you
  *	to play image sequences without flash or HTML5 with the benefit of playing
@@ -34,9 +34,10 @@
  *	@param fps		-	float value that represents the frames per second rate
  *	@param width	-	integer value that scales the target frame to the wanted player width
  *	@param height	-	integer value that scales the target frame to the wanted player height
- *	@param loadParallel - integer value that represents the amount of pictures that are parallely loaded
+ *	@param loadParallel - integer value that represents the amount of pictures that are parallel loaded
  *	@param repeat	-	boolean value enables or disables the auto repeat function
- *	@param playOnLoad		-	boolean value. if set to true the video atomaticly starts to play after the frames are loaded
+ *	@param playOnLoad		-	boolean value. if set to true the video automatically starts to play after the frames are loaded
+ *	@param performStop		-	boolean value. if set to true the video doesn't stop and return to the first frame. It will pause
  *	@param playBackwards	-	boolean value. if set to true the video plays backwards
  *	@param showPreLoader	-	boolean value. if set to true the preloader will be displayed
  *	@param verbose	-	boolean value. if set to true the player will trigger the verbose event
@@ -49,7 +50,6 @@
  *                - $(".movie").jsMovie("play",1,80,false,false);
  *	pause	      - $(".movie").jsMovie("pause");
  *	stop	      - $(".movie").jsMovie("stop");
- *	playUntil	  - $(".movie").jsMovie("playUntil",10); !DEPRECATED - use play instead
  *	nextFrame	  - $(".movie").jsMovie("nextFrame");
  *	previousFrame - $(".movie").jsMovie("previousFrame");
  *	playClip	  - $(".movie").jsMovie("playClip","startClip");
@@ -85,13 +85,14 @@
         step : 1,
         folder : "pic/",
         grid: {height:800,width:600,rows:1,columns:1},
-        loader: {path:"img/loader2.png",height:50,width:50,rows:2,columns:4},
+        loader: {path:"img/loader4x4.png",height:40,width:40,rows:4,columns:4},
         fps: 12,
         width: 640,
         height: 480,
         loadParallel: 1,
         repeat:true,
         playOnLoad:false,
+        performStop:true,
         playBackwards:false,
         showPreLoader:false,
         verbose:true,
@@ -105,7 +106,7 @@
         init : function(options) {
 
             //clone setting object for multiple use
-            _settings = $.extend(true, {}, settings);
+            var _settings = $.extend(true, {}, settings);
 
             if (options != undefined) {
                 $.extend( _settings, options );
@@ -122,7 +123,7 @@
                     if($(this).data("settings").sequence !== ''){
                         $(this).data("settings").images = [];
                         var findZero;
-                        for(var sequence_no = $(this).data("settings").from; sequence_no <= $(this).data("settings").to; sequence_no = sequence_no+$(this).data("settings").step){
+                        for(var sequence_no = parseInt($(this).data("settings").from); sequence_no <= parseInt($(this).data("settings").to); sequence_no = sequence_no+parseInt($(this).data("settings").step)){
                             var digits = 1;
                             if(sequence_no > 0){
                                 digits = (Math.floor(Math.log(sequence_no)/Math.log(10))+1);
@@ -166,7 +167,7 @@
                     $(this).bind("pause",pause_movie_event);
 
                     //show first frame
-                    $(this).data("frame0").show();
+                    $(this).data("frame0") && $(this).data("frame0").show();
                     $(this).data("currentFrame",$(this).data("frame0"));
                     $(this).data("currentFrame").css({'background-image':'url("'+$(this).data("settings").folder+$(this).data("settings").images[0]+'")'});
 
@@ -228,20 +229,20 @@
                 return this;
             }
 
-            if(fromFrame === undefined){
+            if(fromFrame === undefined || fromFrame === null){
                 fromFrame = 1;
             }
 
-            if(toFrame === undefined){
+            if(toFrame === undefined || toFrame === null){
                 toFrame = $(this).data("settings").images.length*$(this).data("settings").grid.rows*$(this).data("settings").grid.columns;
             }
 
-            if(repeat === undefined){
+            if(repeat === undefined || repeat === null){
                 repeat = $(this).data("settings").repeat;
             }
 
             if(performStop === undefined){
-                performStop = true;
+                performStop = $(this).data("settings").performStop;
             }
 
             $(this).data("currentStatus","play");
@@ -264,14 +265,6 @@
         stop : function(){
             $(this).data("currentStatus","stopped");
             $(this).trigger("stop");
-            return this;
-        },
-
-        /**
-         * Deprecated ! use play(1,frame) instead
-         */
-        playUntil : function(frame) {
-            methods.play.apply(this,[1,frame]);
             return this;
         },
 
@@ -616,7 +609,6 @@
         $(this).data("currentFrame",$(this).data("frame0"));
         $(this).data("currentFrame").show();
         $(this).data("currentStatus","stop");
-        $(this).data("playUntil",-1);
     }
 
     function pause_movie_event(e){
@@ -680,8 +672,8 @@
                 .children(".loaderOverlay")
                 .css({"background-color":"black",
                     opacity:0.8,
-                    height:this.height()+"px",
-                    width:this.width()+"px",
+                    height:this.outerHeight(false)+"px",
+                    width:this.outerWidth(false)+"px",
                     position:'absolute',
                     top:this.offset().top+"px",
                     left:this.offset().left+"px"});
