@@ -3,7 +3,7 @@
 
 A collection of useful JAR files. 
 
-Java 7 is required (some JAR files might work also under Java 6).
+An installed version of Java (Runtime Environment) 7 is required (some JAR files might also work under Java 6).
 
 Please take a look at the **README in the JARs directory** for further information about the different JAR files. 
 
