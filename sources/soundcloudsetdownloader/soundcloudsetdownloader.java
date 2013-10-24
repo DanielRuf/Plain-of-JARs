@@ -1,16 +1,18 @@
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
-import java.io.File;
+import java.io.IOException;
 import java.io.Console;
 import java.net.URL;
-import java.net.URLConnection;
 import java.net.HttpURLConnection;
+import java.net.Proxy;
+import java.net.InetSocketAddress;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
@@ -25,20 +27,25 @@ import com.mpatric.mp3agic.UnsupportedTagException;
   *
   * SoundCloudSetDownloader
   *
-  * @version 1.2.2 vom 15.10.2013
-  * @author Daniel Ruf 
+  * @version 1.3.0 vom 24.10.2013
+  * @author Daniel Ruf
   */
 
 public class soundcloudsetdownloader {
   public static void main(String[] args) throws Exception {
-    String version = "1.2.2";
+    String version = "1.3.0";
     String program = "SoundCloudSetDownloader";
     System.out.println(program + " " + version );
     String client_id = "b45b1aa10f1ac2941910a7f0d10f8e28";
     int file_number = 0;
     Console console = System.console();
+    String proxy_server = console.readLine("Please enter the IP of the proxy server (optional): ");
+    String proxy_port = console.readLine("Please enter the port of the proxy server (optional): ");
     String username = console.readLine("Please enter the name of the Soundcloud artist: ");
-    URLConnection conn4 = new URL("https://api.soundcloud.com/users/"+username+".json?client_id="+client_id).openConnection();
+    HttpURLConnection conn4 = (HttpURLConnection)(new URL("https://api.soundcloud.com/users/"+username+".json?client_id="+client_id).openConnection());
+    conn4.setConnectTimeout(60000);
+    conn4.setReadTimeout(60000);
+    conn4.connect();
     InputStream in = conn4.getInputStream();
     InputStreamReader is3 = new InputStreamReader(in);
     StringBuilder sb2=new StringBuilder();
@@ -53,10 +60,13 @@ public class soundcloudsetdownloader {
     int playlists_count = user_data.getInt("playlist_count");
     int iterations = (int) Math.ceil(playlists_count/200.0);
     int iterations_i = 0;
-    while (iterations_i != iterations) { 
+    while (iterations_i != iterations) {
       int limit = 200;
       int offset = iterations_i*limit;
-      URLConnection conn3 = new URL("https://api.soundcloud.com/users/"+username+"/playlists.json?limit="+limit+"&offset="+offset+"&client_id="+client_id).openConnection();
+      HttpURLConnection conn3 = (HttpURLConnection)(new URL("https://api.soundcloud.com/users/"+username+"/playlists.json?limit="+limit+"&offset="+offset+"&client_id="+client_id).openConnection());
+      conn3.setConnectTimeout(60000);
+      conn3.setReadTimeout(60000);
+      conn3.connect();
       InputStream in2 = conn3.getInputStream();
       InputStreamReader is2 = new InputStreamReader(in2);
       StringBuilder sb=new StringBuilder();
@@ -100,12 +110,26 @@ public class soundcloudsetdownloader {
           int id = tracks.getJSONObject(j).getInt("id");
           HttpURLConnection con = (HttpURLConnection)(new URL( "https://api.soundcloud.com/tracks/"+id+"/stream?client_id="+client_id+"" ).openConnection());
           con.setInstanceFollowRedirects( false );
+          con.setConnectTimeout(60000);
+          con.setReadTimeout(60000);
           con.connect();
-          //int responseCode = con.getResponseCode();
+          if (con.getResponseCode() == 401) {
+            if (proxy_server != null && proxy_port != null && !proxy_server.isEmpty() && !proxy_port.isEmpty()) {
+              Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxy_server, Integer.parseInt(proxy_port)));
+              try {con = (HttpURLConnection)(new URL( "https://api.soundcloud.com/tracks/"+id+"/stream?client_id="+client_id+"" ).openConnection(proxy));}
+              catch (Exception ex) {}
+            }
+            con.setInstanceFollowRedirects( false );
+            con.setConnectTimeout(60000);
+            con.setReadTimeout(60000);
+            con.connect();
+          }
+          String location = con.getHeaderField( "Location" );
           try{
-            String location = con.getHeaderField( "Location" );
-            URLConnection conn = new URL(location).openConnection();
-            //int file_size = conn.getContentLength();
+            HttpURLConnection conn = (HttpURLConnection)(new URL(location).openConnection());
+            conn.setConnectTimeout(60000);
+            conn.setReadTimeout(60000);
+            conn.connect();
             String content_length= conn.getHeaderField( "content-length" );
             InputStream is = conn.getInputStream();
             String mp3_filename = file_number+"_"+username_soundcloud+" - "+title_track+".mp3";
@@ -132,7 +156,6 @@ public class soundcloudsetdownloader {
             if (mp3file.hasId3v2Tag()) {
               id3v2Tag = mp3file.getId3v2Tag();
             } else {
-              // mp3 does not have an ID3v2 tag, let's create one..
               id3v2Tag = new ID3v23Tag();
               mp3file.setId3v2Tag(id3v2Tag);
             }
@@ -157,8 +180,8 @@ public class soundcloudsetdownloader {
         i++;
       } 
       iterations_i++;
-    } // end of while
+    }
     System.out.println("");
     System.out.println("Done"); 
   } // end of main
-} // end of class soundcloudsetdownloader
+} // end of class soundcloudsetdownloader       
