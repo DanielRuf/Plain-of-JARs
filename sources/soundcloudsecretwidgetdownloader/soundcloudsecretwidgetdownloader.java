@@ -27,13 +27,13 @@ import com.mpatric.mp3agic.UnsupportedTagException;
   *
   * SoundCloudSecretWidgetDownloader
   *
-  * @version 1.0.0 vom 25.10.2013
+  * @version 1.0.1 vom 28.10.2013
   * @author Daniel Ruf
   */
 
 public class soundcloudsecretwidgetdownloader {
   public static void main(String[] args) throws Exception {
-    String version = "1.0.0";
+    String version = "1.0.1";
     String program = "SoundCloudSecretWidgetDownloader";
     System.out.println(program + " " + version );
     String client_id = "b45b1aa10f1ac2941910a7f0d10f8e28";
@@ -43,7 +43,7 @@ public class soundcloudsecretwidgetdownloader {
     String proxy_port = console.readLine("Please enter the port of the proxy server (optional): ");
     String playlist_id = console.readLine("Please enter the ID of the Soundcloud playlist: ");
     String secret_token = console.readLine("Please enter the secret token of the Soundcloud playlist: ");
-    HttpURLConnection conn3 = (HttpURLConnection)(new URL("https://api.sndcdn.com/playlists/"+playlist_id+"/?secret_token="+secret_token+"&client_id="+client_id+"&format=json").openConnection());
+    HttpURLConnection conn3 = (HttpURLConnection)(new URL("https://api.soundcloud.com/playlists/"+playlist_id+"/?secret_token="+secret_token+"&client_id="+client_id+"&format=json").openConnection());
     conn3.setConnectTimeout(60000);
     conn3.setReadTimeout(60000);
     conn3.connect();
@@ -75,7 +75,7 @@ public class soundcloudsecretwidgetdownloader {
       title_track = title_track.replaceAll("\"", "");
       int id = tracks.getJSONObject(i).getInt("id");
       HttpURLConnection con = null;
-      con = (HttpURLConnection)(new URL("https://api.soundcloud.com/i1/tracks/"+id+"/streams?secret_token="+secret_token+"&client_id="+client_id+"&format=json").openConnection());
+      con = (HttpURLConnection)(new URL("https://api.soundcloud.com/tracks/"+id+"/stream?secret_token="+secret_token+"&client_id="+client_id+"&format=json").openConnection());
       con.setInstanceFollowRedirects( false );
       con.setConnectTimeout(60000);
       con.setReadTimeout(60000);
@@ -83,7 +83,7 @@ public class soundcloudsecretwidgetdownloader {
       if (con.getResponseCode() == 401) {
         if (proxy_server != null && proxy_port != null && !proxy_server.isEmpty() && !proxy_port.isEmpty()) {
           Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxy_server, Integer.parseInt(proxy_port)));
-          try {con = (HttpURLConnection)(new URL("https://api.soundcloud.com/i1/tracks/"+id+"/streams?secret_token="+secret_token+"&client_id="+client_id+"&format=json").openConnection(proxy));}
+          try {con = (HttpURLConnection)(new URL("https://api.soundcloud.com/tracks/"+id+"/stream?secret_token="+secret_token+"&client_id="+client_id+"&format=json").openConnection(proxy));}
           catch (Exception ex) {}
         }
         con.setInstanceFollowRedirects( false );
@@ -91,18 +91,7 @@ public class soundcloudsecretwidgetdownloader {
         con.setReadTimeout(60000);
         con.connect();
       }
-      InputStream in5 = con.getInputStream();
-      InputStreamReader is5 = new InputStreamReader(in5);
-      StringBuilder sb5=new StringBuilder();
-      BufferedReader br5 = new BufferedReader(is5);
-      String read5 = br5.readLine();
-      while(read5 != null) {
-        sb5.append(read5);
-        read5 =br5.readLine();
-      }
-      String mp3file_download_url_json = sb5.toString();
-      JSONObject mp3file_download_url = new JSONObject(mp3file_download_url_json);
-      String location = mp3file_download_url.getString("http_mp3_128_url");
+      String location = con.getHeaderField( "Location" );
       con.disconnect();
       try {
         String content_length= null;
@@ -156,7 +145,6 @@ public class soundcloudsecretwidgetdownloader {
       catch (Exception ex) {}
       i++;
     } 
-    
     System.out.println("");
     System.out.println("Done"); 
   } // end of main

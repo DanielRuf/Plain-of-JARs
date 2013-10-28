@@ -127,15 +127,22 @@ Makes a full backup (FTP and SQL) of a website and downloads it. Please set all 
 ![WebApp](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) WebApp 1.0.0
 =================
 
-
-
-![SoundCloudSecretWidgetDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudSecretWidgetDownloader 1.0.0
-=================
-
-Downloads all tracks from a private SoundCloud playlist, which are (mostly) not public on the SoundCloud account, can not be downloaded using the other tools and are privately shared songs which are also used in SoundCloud playlists widgets on websites.
-
 WebApp can be used to create a standalone app from a website using JavaFX and a webview. You can also set some settings in the properties file.
 
 I have created the JAR file using: `javafxpackager -createjar -nocss2bin -appclass webapp -srcdir . -outdir ../out -outfile webapp.jar`.
 
-Before this, I moved the properties file and the JAva file to another directory above the current directory.
+Before this, I moved the properties file and the Java file to another directory above the current directory.
+
+
+
+![SoundCloudSecretWidgetDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudSecretWidgetDownloader 1.0.1
+=================
+
+Downloads all tracks from a private SoundCloud playlist, which are (mostly) not public on the SoundCloud account, can not be downloaded using the other tools and are privately shared songs which are also used in SoundCloud playlists widgets on websites.
+
+
+
+![SoundCloudPrivateTrackDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudPrivateTrackDownloader 1.0.0
+=================
+
+Downloads one private track from SoundCloud.
