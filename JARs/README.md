@@ -1,21 +1,21 @@
 Usage
 =================
 
-Put the JAR file into a directory next to the files (MP3, XML, CSV, TXT, JPG, *) and run `java -jar jarfile.jar`.
+Put the JAR file into a directory next to the files (MP3, XML, CSV, TXT, JPG, *) and run `java -jar tool.jar`.
 
 
 
-![CSV2JSON](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) CSV2JSON 1.1.1
+![CSV2JSON](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) CSV2JSON 2.0.0
 =================
 
-Converts all CSV files to well formed JSON files.
+Converts all CSV files to well formed JSON files, uses now Jackson.
 
 
 
-![XML2JSON](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) XML2JSON 1.1.1
+![XML2JSON](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) XML2JSON 2.0.0
 =================
 
-Converts all XML files to well formed JSON files.
+Converts all XML files to well formed JSON files, uses now Jackson.
 
 
 
