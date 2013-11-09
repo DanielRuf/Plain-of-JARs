@@ -1,6 +1,6 @@
 URL: http://johann.loefflmann.net/de/software/jarfix/index.html
 Jarfix 2.0.0
-Copyright (c) 2002, 2012, Dipl.-Inf. (FH) Johann N. Löfflmann.
+Copyright (c) 2002, 2012, Dipl.-Inf. (FH) Johann N. LÃ¶fflmann.
 All rights reserved.
 
 Redistribution and use in binary forms, without modification, are permitted
@@ -32,7 +32,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 
 The Jarfix icon
-Copyright (c) 2011, 2012, Dipl.-Inf. (FH) Johann N. Löfflmann.
+Copyright (c) 2011, 2012, Dipl.-Inf. (FH) Johann N. LÃ¶fflmann.
 All rights reserved.
 
 The Jarfix icon is a composition of
