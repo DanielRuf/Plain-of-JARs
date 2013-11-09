@@ -146,3 +146,10 @@ Downloads all tracks from a private SoundCloud playlist, which are (mostly) not 
 =================
 
 Downloads one private track from SoundCloud.
+
+
+
+![EpubSorter](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) EpubSorter 1.0.0
+=================
+
+Sorts all EPUB files into directories from A to Z.
