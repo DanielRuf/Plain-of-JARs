@@ -2,7 +2,7 @@
   *
   * XML2JSON
   *
-  * @version 2.0.0 vom 05.11.2012
+  * @version 2.0.0 vom 05.11.2013
   * @author Daniel Ruf 
   */
 import java.io.File;

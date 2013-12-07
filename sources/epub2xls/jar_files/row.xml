@@ -1,0 +1,6 @@
+
+<Row>
+<Cell ss:StyleID="1"><Data ss:Type="String">#path#</Data></Cell>
+<Cell ss:StyleID="1"><Data ss:Type="String">#author#</Data></Cell>
+<Cell ss:StyleID="1"><Data ss:Type="String">#title#</Data></Cell>
+</Row>

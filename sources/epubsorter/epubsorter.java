@@ -1,8 +1,8 @@
 /**
   *
-  * EpubSorter
+  * EPUBSorter
   *
-  * @version 1.0.0 vom 09.11.2012
+  * @version 1.0.0 vom 09.11.2013
   * @author Daniel Ruf 
   */
 import java.io.File;
@@ -15,7 +15,7 @@ public class epubsorter {
     File[] pdf_files;
     File[] epub_files;
     String version = "1.0.0";
-    String program = "EpubSorter";  
+    String program = "EPUBSorter";  
     System.out.println(program + " " + version );
     pdf_files=directory.listFiles(new FileFilter() {
       public boolean accept(File dir) {

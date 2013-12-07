@@ -149,7 +149,14 @@ Downloads one private track from SoundCloud.
 
 
 
-![EpubSorter](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) EpubSorter 1.0.0
+![EPUBSorter](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) EPUBSorter 1.0.0
 =================
 
 Sorts all EPUB files into directories from A to Z.
+
+
+
+![EPUB2XLS](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) EPUB2XLS 1.0.0
+=================
+
+Writes all EPUB files to an XLS file.

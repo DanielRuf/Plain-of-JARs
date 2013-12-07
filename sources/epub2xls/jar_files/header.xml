@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40">
+<Styles>
+<Style ss:ID="1">
+<Alignment ss:Horizontal="Left"/>
+</Style>
+<Style ss:ID="2">
+<Alignment ss:Horizontal="Left"/>
+<Font ss:Bold="1"/>
+</Style>
+</Styles>
+<Worksheet ss:Name="eBooks">
+<Table>
+<Row>
+<Cell ss:StyleID="2"><Data ss:Type="String">Pfad</Data></Cell>
+<Cell ss:StyleID="2"><Data ss:Type="String">Author</Data></Cell>
+<Cell ss:StyleID="2"><Data ss:Type="String">Titel</Data></Cell>
+</Row>
