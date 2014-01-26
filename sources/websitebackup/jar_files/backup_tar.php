@@ -33,19 +33,19 @@ function Tar($source, $destination)
 
             if (is_dir($file) === true)
             {	
-                $tar->addEmptyDir(str_replace($source . '/', '', $file));
-				$tar[str_replace($source . '/', '', $file)]->chmod(substr(sprintf('%o', fileperms($file)), -4));
+                $tar->addEmptyDir(basename($file));
+				$tar[basename($file)]->chmod(substr(sprintf('%o', fileperms($file)), -4));
             }
             else if (is_file($file) === true)
             {
-                $tar->addFromString(str_replace($source . '/', '', $file), file_get_contents($file));
-				$tar[str_replace($source . '/', '', $file)]->chmod(substr(sprintf('%o', fileperms($file)), -4));
+                $tar->addFile($file, basename($file));
+				$tar[basename($file)]->chmod(substr(sprintf('%o', fileperms($file)), -4));
             }
         }
     }
     else if (is_file($source) === true)
     {
-        $tar->addFile(basename($source), file_get_contents($source));
+        $tar->addFile($source, basename($source));
 		$tar[basename($source)]->chmod(substr(sprintf('%o', fileperms($source)), -4));
     }
 

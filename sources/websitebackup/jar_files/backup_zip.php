@@ -32,17 +32,17 @@ function Zip($source, $destination)
 
             if (is_dir($file) === true)
             {
-                $zip->addEmptyDir(str_replace($source . '/', '', $file . '/'));
+                $zip->addEmptyDir(basename($file));
             }
             else if (is_file($file) === true)
             {
-                $zip->addFromString(str_replace($source . '/', '', $file), file_get_contents($file));
+                $zip->addFile($file,basename($file));
             }
         }
     }
     else if (is_file($source) === true)
     {
-        $zip->addFromString(basename($source), file_get_contents($source));
+        $zip->addFile($source, basename($source));
     }
 		
    return $zip->close();
