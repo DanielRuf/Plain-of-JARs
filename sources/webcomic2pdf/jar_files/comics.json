@@ -1,0 +1,4 @@
+{"comics":[
+{"name":"Gunnerkrigg Court", "url":"http://www.gunnerkrigg.com/?p=","image_selector":"html body div.comic img.comic_image", "last_page_selector":"div.center.nav a[href^=?p=]", "first_page":"http://www.gunnerkrigg.com/?p=1", "url_parameter":"?p="}
+]
+}
