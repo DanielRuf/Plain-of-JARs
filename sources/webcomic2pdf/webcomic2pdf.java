@@ -2,7 +2,7 @@
   *
   * Webcomic2PDF
   *
-  * @version 1.0.0 vom 23.03.2014
+  * @version 1.0.1 vom 27.03.2014
   * @author Daniel Ruf
   */
 import org.jsoup.*;
@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.annotation.*;
 public class webcomic2pdf {
   public static void main(String[] args) throws Exception {
-    String version = "1.0.0";
+    String version = "1.0.1";
     String program = "Webcomic2PDF";
     System.out.println(program + " " + version );
     File directory = new File("pages");
@@ -50,8 +50,9 @@ public class webcomic2pdf {
       BufferedReader fileReader = new BufferedReader(new InputStreamReader(webcomic2pdf.class.getResourceAsStream("jar_files/comics.json")));
       JsonNode rootNode = mapper.readTree(fileReader);
       JsonNode comics = rootNode.get("comics");
+      System.out.println("#\tName");
       for (int comic = 0; comic < comics.size(); comic ++) {
-        System.out.println(comic+": "+comics.get(comic).get("name").textValue());
+        System.out.println(comic+"\t"+comics.get(comic).get("name").textValue());
       }
       System.out.println("");
       System.out.print("Select comic #:");
