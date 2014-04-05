@@ -163,7 +163,7 @@ Writes all EPUB files to an XLS file.
 
 
 
-![Webcomic2PDF](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) Webcomic2PDF 1.0.0
+![Webcomic2PDF](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) Webcomic2PDF 1.0.2
 =================
 
 Downloads specified pages from a webcomic and saves it as PDF. You can add more webcomics by editing the file `jar_files/comics.json` in the JAR file.

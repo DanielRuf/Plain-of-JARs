@@ -2,29 +2,41 @@
   *
   * Webcomic2PDF
   *
-  * @version 1.0.1 vom 27.03.2014
+  * @version 1.0.2 vom 05.04.2014
   * @author Daniel Ruf
   */
-import org.jsoup.*;
-import java.util.logging.*;
-import org.jsoup.parser.*;
-import org.jsoup.helper.*;
-import org.jsoup.select.*;
-import org.jsoup.nodes.*;
-import java.io.*;
-import java.net.*;
+import org.jsoup.Jsoup;
+import java.util.logging.Logger;
+import java.util.logging.LogManager;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import org.jsoup.select.Elements;
+import org.jsoup.nodes.Document;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.FileOutputStream;
+import java.io.FileFilter;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.awt.image.BufferedImage;
-import org.apache.pdfbox.pdmodel.*;
-import org.apache.pdfbox.pdmodel.common.*;
-import org.apache.pdfbox.pdmodel.edit.*;
-import org.apache.pdfbox.pdmodel.graphics.xobject.*;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.graphics.xobject.PDXObjectImage;
+import org.apache.pdfbox.pdmodel.graphics.xobject.PDJpeg;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageInputStream;
-import com.fasterxml.jackson.databind.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.JsonNode;
 public class webcomic2pdf {
   public static void main(String[] args) throws Exception {
-    String version = "1.0.1";
+    String version = "1.0.2";
     String program = "Webcomic2PDF";
     System.out.println(program + " " + version );
     File directory = new File("pages");
