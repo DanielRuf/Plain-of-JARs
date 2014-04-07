@@ -2,7 +2,7 @@
   *
   * Webcomic2PDF
   *
-  * @version 1.0.2 vom 05.04.2014
+  * @version 1.0.3 vom 07.04.2014
   * @author Daniel Ruf
   */
 import org.jsoup.Jsoup;
@@ -36,7 +36,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 public class webcomic2pdf {
   public static void main(String[] args) throws Exception {
-    String version = "1.0.2";
+    String version = "1.0.3";
     String program = "Webcomic2PDF";
     System.out.println(program + " " + version );
     File directory = new File("pages");
@@ -155,7 +155,7 @@ public class webcomic2pdf {
     } catch(IOException e) {
     }
   } // end of main
-  static String getPage(int page, String url, String selector) {
+  private static String getPage(int page, String url, String selector) {
     try {
       Document doc = Jsoup.connect(url+page).get();
       Elements image = doc.select(selector);
@@ -164,7 +164,7 @@ public class webcomic2pdf {
       return "";
     }
   }
-  static int getPages(String url, String selector, String parameter) {
+  private static int getPages(String url, String selector, String parameter) {
     try {
       Document doc = Jsoup.connect(url).get();
       Elements last_page = doc.select(selector);
