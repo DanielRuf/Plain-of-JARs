@@ -63,7 +63,7 @@ public class webcomic2pdf {
       JsonNode rootNode = mapper.readTree(fileReader);
       JsonNode comics = rootNode.get("comics");
       System.out.println("#\tName");
-      for (int comic = 0; comic < comics.size(); comic ++) {
+      for (int comic = 0; comic < comics.size(); comic++) {
         System.out.println(comic+"\t"+comics.get(comic).get("name").textValue());
       }
       System.out.println("");
@@ -117,7 +117,7 @@ public class webcomic2pdf {
         }  
         outstream.close();
         i++;
-        current_page ++;
+        current_page++;
       }
       File[] myarray=directory.listFiles(new FileFilter() {
         public boolean accept(File dir) {
