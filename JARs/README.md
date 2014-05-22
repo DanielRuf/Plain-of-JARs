@@ -167,3 +167,17 @@ Writes all EPUB files to an XLS file.
 =================
 
 Downloads specified pages from a webcomic and saves it as PDF. You can add more webcomics by editing the file `jar_files/comics.json` in the JAR file.
+
+
+
+![XSQL](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) XSQL 1.0.0
+=================
+
+Portable and embedded SQL database demo using H2.
+
+
+
+![XSQLite](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) XSQLite 1.0.0
+=================
+
+Portable and embedded SQLite database demo using SQLite JDBC by Xerial.
