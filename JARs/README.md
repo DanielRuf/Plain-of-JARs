@@ -181,3 +181,10 @@ Portable and embedded SQL database demo using H2.
 =================
 
 Portable and embedded SQLite database demo using SQLite JDBC by Xerial.
+
+
+
+![EmbeddedFulltextDatabase](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) EmbeddedFulltextDatabase 1.0.0
+=================
+
+Portable and embedded fulltextdatabase using H2 database with Apache Lucene with a small demo (experimenting with some new libraries).
