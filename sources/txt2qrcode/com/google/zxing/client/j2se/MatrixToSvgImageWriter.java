@@ -25,159 +25,167 @@ import java.io.OutputStream;
 import java.io.IOException;
 
 /**
- * Writes a {@link BitMatrix} to {@link SvgImage},
+* Writes a {@link BitMatrix} to {@link SvgImage},
  * file or stream.
  *
  * @author
  */
 public final class MatrixToSvgImageWriter {
-
+  
   private static final MatrixToImageConfig DEFAULT_CONFIG = new MatrixToImageConfig();
-
+  
   private MatrixToSvgImageWriter() {}
-
+  
   /**
-   * Renders a {@link BitMatrix} as an image, where "false" bits are rendered
-   * as white, and "true" bits are rendered as black.
-   */
+  * Renders a {@link BitMatrix} as an image, where "false" bits are rendered
+  * as white, and "true" bits are rendered as black.
+  */
   public static SvgImage toSvgImage(BitMatrix matrix) {
-    return toSvgImage(matrix, DEFAULT_CONFIG);
+    return toSvgImage(matrix, DEFAULT_CONFIG, false);
   }
-
+  
   /**
-   * As {@link #toSvgImage(BitMatrix)}, but allows customization of the output.
-   */
-  public static SvgImage toSvgImage(BitMatrix matrix, MatrixToImageConfig config) {
+  * As {@link #toSvgImage(BitMatrix)}, but allows customization of the output.
+  */
+  public static SvgImage toSvgImage(BitMatrix matrix, MatrixToImageConfig config, boolean defineSize) {
     SvgImage result = new SvgImage();
-
-    create(result, matrix, config);
+    
+    create(result, matrix, config, defineSize);
     
     return result;
   }
-
-  private static void create(SvgImage image, BitMatrix matrix, MatrixToImageConfig config) {
-     int quietZone = 5;
-
-     if (matrix == null)
-        return;
-
-     int width = matrix.getWidth();
-     int height = matrix.getHeight();
-     image.addHeader();
-     image.addTag(0, 0, 2 * quietZone + width, 2 * quietZone + height,
-         new SvgImageColor(config.getPixelOffColor()), new SvgImageColor(config.getPixelOnColor()));
-     appendDarkCell(image, matrix, quietZone, quietZone);
-     image.addEnd();
+  
+  private static void create(SvgImage image, BitMatrix matrix, MatrixToImageConfig config, boolean defineSize) {
+    int quietZone = 5;
+    
+    if (matrix == null)
+    return;
+    
+    int width = matrix.getWidth();
+    int height = matrix.getHeight();
+    image.addHeader();
+    if (!defineSize) {
+      //set width and height values to 0
+      image.addTag(0, 0, 2 * quietZone + width, 2 * quietZone + height,
+      new SvgImageColor(config.getPixelOffColor()), new SvgImageColor(config.getPixelOnColor()));
+    } // end of if
+    else {
+      //set width and height values properly
+      image.addTag(2 * quietZone + width, 2 * quietZone + height, 2 * quietZone + width, 2 * quietZone + height,
+      new SvgImageColor(config.getPixelOffColor()), new SvgImageColor(config.getPixelOnColor()));
+    } // end of if-else
+    appendDarkCell(image, matrix, quietZone, quietZone);
+    image.addEnd();
   }
-
+  
   private static void appendDarkCell(SvgImage image, BitMatrix matrix, int offsetX, int offSetY) {
-     if (matrix == null)
-        return;
-
-     int width = matrix.getWidth();
-     int height = matrix.getHeight();
-     BitMatrix processed = new BitMatrix(width, height);
-     boolean currentIsBlack = false;
-     int startPosX = 0;
-     int startPosY = 0;
-     for (int x = 0; x < width; x++)
-     {
-        int endPosX;
-        for (int y = 0; y < height; y++)
-        {
-           if (processed.get(x, y))
-              continue;
+    if (matrix == null)
+    return;
+    
+    int width = matrix.getWidth();
+    int height = matrix.getHeight();
+    BitMatrix processed = new BitMatrix(width, height);
+    boolean currentIsBlack = false;
+    int startPosX = 0;
+    int startPosY = 0;
+    for (int x = 0; x < width; x++)
+    {
+      int endPosX;
+      for (int y = 0; y < height; y++)
+      {
+        if (processed.get(x, y))
+        continue;
         
-           processed.set(x, y);
+        processed.set(x, y);
         
-           if (matrix.get(x, y))
-           {
-              if (!currentIsBlack)
-              {
-                 startPosX = x;
-                 startPosY = y;
-                 currentIsBlack = true;
-              }
-           }
-           else
-           {
-              if (currentIsBlack)
-              {
-                endPosX = findMaximumRectangle(matrix, processed, startPosX, startPosY, y);
-                image.addRec(startPosX + offsetX, startPosY + offSetY, endPosX - startPosX + 1, y - startPosY);
-                currentIsBlack = false;
-              }
-           }
-        }
-        if (currentIsBlack)
+        if (matrix.get(x, y))
         {
-          endPosX = findMaximumRectangle(matrix, processed, startPosX, startPosY, height);
-          image.addRec(startPosX + offsetX, startPosY + offSetY, endPosX - startPosX + 1, height - startPosY);
-          currentIsBlack = false;
+          if (!currentIsBlack)
+          {
+            startPosX = x;
+            startPosY = y;
+            currentIsBlack = true;
+          }
         }
-     }
+        else
+        {
+          if (currentIsBlack)
+          {
+            endPosX = findMaximumRectangle(matrix, processed, startPosX, startPosY, y);
+            image.addRec(startPosX + offsetX, startPosY + offSetY, endPosX - startPosX + 1, y - startPosY);
+            currentIsBlack = false;
+          }
+        }
+      }
+      if (currentIsBlack)
+      {
+        endPosX = findMaximumRectangle(matrix, processed, startPosX, startPosY, height);
+        image.addRec(startPosX + offsetX, startPosY + offSetY, endPosX - startPosX + 1, height - startPosY);
+        currentIsBlack = false;
+      }
+    }
   }
   
   private static int findMaximumRectangle(BitMatrix matrix, BitMatrix processed, int startPosX, int startPosY, int endPosY) {
-     int endPosX = startPosX + 1;
-
-     for (int x = startPosX + 1; x < matrix.getWidth(); x++)
-     {
-        for (int y = startPosY; y < endPosY; y++)
+    int endPosX = startPosX + 1;
+    
+    for (int x = startPosX + 1; x < matrix.getWidth(); x++)
+    {
+      for (int y = startPosY; y < endPosY; y++)
+      {
+        if (!matrix.get(x, y))
         {
-           if (!matrix.get(x, y))
-           {
-              return endPosX;
-           }
+          return endPosX;
         }
-        endPosX = x;
-        for (int y = startPosY; y < endPosY; y++)
-        {
-           processed.set(x, y);
-        }
-     }
-     
-     return endPosX;
+      }
+      endPosX = x;
+      for (int y = startPosY; y < endPosY; y++)
+      {
+        processed.set(x, y);
+      }
+    }
+    
+    return endPosX;
   }
   
   /**
-   * Writes a {@link BitMatrix} to a file.
-   *
-   * @see #toSvgImage(BitMatrix)
-   */
-  public static void writeToFile(BitMatrix matrix, File file) throws IOException {
-    writeToFile(matrix, file, DEFAULT_CONFIG);
+  * Writes a {@link BitMatrix} to a file.
+  *
+  * @see #toSvgImage(BitMatrix)
+  */
+  public static void writeToFile(BitMatrix matrix, File file, boolean defineSize) throws IOException {
+    writeToFile(matrix, file, DEFAULT_CONFIG, defineSize);
   }
-
+  
   /**
-   * As {@link #writeToFile(BitMatrix, File)}, but allows customization of the output.
-   */
-  public static void writeToFile(BitMatrix matrix, File file, MatrixToImageConfig config) 
-      throws IOException {  
-    SvgImage image = toSvgImage(matrix, config);
+  * As {@link #writeToFile(BitMatrix, File)}, but allows customization of the output.
+  */
+  public static void writeToFile(BitMatrix matrix, File file, MatrixToImageConfig config, boolean defineSize) 
+  throws IOException {  
+    SvgImage image = toSvgImage(matrix, config, defineSize);
     FileWriter writer = new FileWriter(file);
     writer.write(image.toString());
     writer.close();
   }
   
   /**
-   * Writes a {@link BitMatrix} to a stream.
-   *
-   * @see #toSvgImage(BitMatrix)
-   */
-  public static void writeToStream(BitMatrix matrix, OutputStream stream) throws IOException {
-    writeToStream(matrix, stream, DEFAULT_CONFIG);
+  * Writes a {@link BitMatrix} to a stream.
+  *
+  * @see #toSvgImage(BitMatrix)
+  */
+  public static void writeToStream(BitMatrix matrix, OutputStream stream, boolean defineSize) throws IOException {
+    writeToStream(matrix, stream, DEFAULT_CONFIG, defineSize);
   }
-
+  
   /**
-   * As {@link #writeToStream(BitMatrix, OutputStream)}, but allows customization of the output.
-   */
-  public static void writeToStream(BitMatrix matrix, OutputStream stream, MatrixToImageConfig config) 
-      throws IOException {  
-    SvgImage image = toSvgImage(matrix, config);
+  * As {@link #writeToStream(BitMatrix, OutputStream)}, but allows customization of the output.
+  */
+  public static void writeToStream(BitMatrix matrix, OutputStream stream, MatrixToImageConfig config, boolean defineSize) 
+  throws IOException {  
+    SvgImage image = toSvgImage(matrix, config, defineSize);
     OutputStreamWriter writer = new OutputStreamWriter(stream);
     writer.write(image.toString());
     writer.close();
   }
-
+  
 }

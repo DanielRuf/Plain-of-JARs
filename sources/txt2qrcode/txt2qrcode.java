@@ -2,7 +2,7 @@
   *
   * TXT2QRCode
   *
-  * @version 1.1.0 vom 27.12.2014
+  * @version 1.1.1 vom 27.12.2014
   * @author Daniel Ruf 
   */
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class txt2qrcode {
     String path2 = ".";    
     File directory = new File(path2);    
     File[] myarray;
-    String version = "1.1.0";
+    String version = "1.1.1";
     String program = "TXT2QRCode";  
     System.out.println(program + " " + version );
     myarray=directory.listFiles(new FileFilter() {
@@ -45,7 +45,7 @@ public class txt2qrcode {
       try {
         bitMatrix = writer.encode(content, BarcodeFormat.QR_CODE, 300, 300);
         MatrixToImageWriter.writeToFile(bitMatrix, "PNG", new File(filename+".png"));
-        MatrixToSvgImageWriter.writeToFile(bitMatrix, new File(filename + ".svg"));
+        MatrixToSvgImageWriter.writeToFile(bitMatrix, new File(filename + ".svg"), true);
       } catch (WriterException e){
         e.printStackTrace();
       } catch (IOException e){
