@@ -26,10 +26,10 @@ Shuffle all MP3 files for mp3 players without any display and shuffle function.
 
 
 
-![TXT2QRCode](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) TXT2QRCode 1.0.0
+![TXT2QRCode](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) TXT2QRCode 1.1.0
 =================
 
-Converts all TXT files to QRCode images.
+Converts all TXT files to QRCode images (PNG and SVG, PDF is planned).
 
 
 
