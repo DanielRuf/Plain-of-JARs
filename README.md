@@ -1,9 +1,9 @@
 ![Plain of JARs](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) Plain of JARs
 =================
 
-A collection of useful JAR files. 
+A collection of useful JAR files. Dedicated to my beloved father who died in 2015.
 
-An installed version of Java (Runtime Environment) 7 is required (some JAR files might also work under Java 6).
+An installed version of Java (Runtime Environment) 8 is required (some JAR files might also work under Java 6 and Java 7).
 
 Please take a look at the **README in the JARs directory** for further information about the different JAR files. 
 
