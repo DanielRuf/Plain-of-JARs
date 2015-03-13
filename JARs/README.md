@@ -194,4 +194,11 @@ Portable and embedded fulltextdatabase using H2 database with Apache Lucene with
 ![File2Zip](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) File2Zip 1.0.0
 =================
 
-Prepare malware samples as password protected zip files for security vendors.
+Prepare malware samples as password protected zip files for further analysis with security vendors.
+
+
+
+![EmailDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) EmailDownloader 1.0.0
+=================
+
+Download email attachments from an IMAP mailbox for further analysis.
