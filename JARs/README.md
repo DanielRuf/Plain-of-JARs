@@ -216,3 +216,10 @@ Uploads all files in a given directory to VirusTotal using the VirusTotal API.
 =================
 
 Sends the password protected zip files to the security vendors.
+
+
+
+![AnubisScan](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) AnubisScan 1.0.0
+=================
+
+Uploads all files in a given directory to Anubis using Python.

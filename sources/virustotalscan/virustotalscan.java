@@ -24,7 +24,7 @@ public class virustotalscan {
     String path2 = ".";
     File[] myarray;  
     String version = "1.0.0";
-    String program = "VirustotalScan";
+    String program = "VirusTotalScan";
     System.out.println(program + " " + version );
     String comment = "";
     String apikey = "";
