@@ -2,13 +2,14 @@
   *
   * EmailDownloader
   *
-  * @version 1.0.0 vom 28.02.2015
+  * @version 1.1.0 vom 22.03.2015
   * @author Daniel Ruf 
   */
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.UUID;
 import javax.mail.Address;
 import javax.mail.Folder;
 import javax.mail.Flags;
@@ -26,7 +27,7 @@ public class emaildownloader {
   private String saveDirectory;
   
   public static void main(String[] args) {
-    String version = "1.0.0";
+    String version = "1.1.0";
     String program = "EmailDownloader";
     System.out.println(program + " " + version );
     String host = "";
@@ -34,6 +35,7 @@ public class emaildownloader {
     String username = "";
     String password = "";
     String saveDirectory = "";
+    Boolean replace_existing_files = false;
     Properties prop = new Properties();
     try {
       prop.load(new FileInputStream("config.properties")); 
@@ -42,6 +44,7 @@ public class emaildownloader {
       username = prop.getProperty("username");
       password = prop.getProperty("password");
       saveDirectory = prop.getProperty("directory");
+      replace_existing_files = Boolean.parseBoolean(prop.getProperty("replace_existing_files"));
     } catch (IOException ex) {
       ex.printStackTrace();
     }
@@ -49,7 +52,7 @@ public class emaildownloader {
     createDirs.mkdirs();
     emaildownloader receiver = new emaildownloader();
     receiver.setSaveDirectory(saveDirectory);
-    receiver.downloadEmailAttachments(host, port, username, password);
+    receiver.downloadEmailAttachments(host, port, username, password, replace_existing_files);
     System.out.println("");
     System.out.println("Done.");
   }
@@ -59,7 +62,7 @@ public class emaildownloader {
   }
   
   public void downloadEmailAttachments(String host, String port,
-  String username, String password) {
+  String username, String password, Boolean replace_existing_files) {
     Properties properties = new Properties();
     properties.put("mail.imap.host", host);
     properties.put("mail.imap.port", port);
@@ -92,6 +95,10 @@ public class emaildownloader {
               MimeBodyPart part = (MimeBodyPart) multiPart.getBodyPart(partCount);
               if (Part.ATTACHMENT.equalsIgnoreCase(part.getDisposition())) {
                 String fileName = part.getFileName();
+                if (!replace_existing_files) {
+                  UUID random = UUID.randomUUID();
+                  fileName = fileName.replaceFirst("[.]", "_"+random+".");
+                } // end of if
                 attachFiles += fileName + ", ";
                 part.saveFile(saveDirectory + File.separator + fileName);
               } else {

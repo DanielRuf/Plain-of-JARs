@@ -198,7 +198,14 @@ Prepare malware samples as password protected zip files for further analysis wit
 
 
 
-![EmailDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) EmailDownloader 1.0.0
+![EmailDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) EmailDownloader 1.1.0
 =================
 
 Download email attachments from an IMAP mailbox for further analysis.
+
+
+
+![VirusTotalScan](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) VirusTotalScan 1.0.0
+=================
+
+Uploads all files in a given directory to VirusTotal using their API.
