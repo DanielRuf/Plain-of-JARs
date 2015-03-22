@@ -208,4 +208,11 @@ Download email attachments from an IMAP mailbox for further analysis.
 ![VirusTotalScan](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) VirusTotalScan 1.0.0
 =================
 
-Uploads all files in a given directory to VirusTotal using their API.
+Uploads all files in a given directory to VirusTotal using the VirusTotal API.
+
+
+
+![MailSender](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) MailSender 1.0.0
+=================
+
+Sends the password protected zip files to the security vendors.
