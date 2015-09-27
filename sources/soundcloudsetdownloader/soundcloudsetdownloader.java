@@ -36,7 +36,7 @@ public class soundcloudsetdownloader {
     String version = "1.3.0";
     String program = "SoundCloudSetDownloader";
     System.out.println(program + " " + version );
-    String client_id = "b45b1aa10f1ac2941910a7f0d10f8e28";
+    String client_id = "02gUJC0hH2ct1EGOcYXQIzRFU91c72Ea";
     int file_number = 0;
     Console console = System.console();
     String proxy_server = console.readLine("Please enter the IP of the proxy server (optional): ");
