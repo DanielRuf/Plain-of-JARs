@@ -237,3 +237,10 @@ Uploads all files in a given directory to a given URL.
 =================
 
 Dumps contents from a website to a local H" database using jsoup.
+
+
+
+![H2SQLExport](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) H2SQLExport 1.0.0
+=================
+
+Exports a H2 database to an SQL file.
