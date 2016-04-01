@@ -236,7 +236,7 @@ Uploads all files in a given directory to a given URL.
 ![Dumper](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) Dumper 1.0.0
 =================
 
-Dumps contents from a website to a local H" database using jsoup.
+Dumps contents from a website to a local H2 database using jsoup.
 
 
 
@@ -244,3 +244,17 @@ Dumps contents from a website to a local H" database using jsoup.
 =================
 
 Exports a H2 database to an SQL file.
+
+
+
+![DirectoryWatcher](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) DirectoryWatcher 1.0.0
+=================
+
+Watches a given directory and its subdirectories for changes and commits changes to a local Git repository.
+
+
+
+![GitBackup](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) GitBackup 1.0.0
+=================
+
+Backups up a given directory as Git repository.
