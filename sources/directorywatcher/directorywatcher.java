@@ -2,7 +2,7 @@
   *
   * DirectoryWatcher
   *
-  * @version 1.0 vom 01.04.2016
+  * @version 1.0.1 vom 06.04.2016
   * @author Daniel Ruf
   */
 
@@ -45,17 +45,17 @@ public class directorywatcher {
   }
   
   public static void main(String[] args) throws IOException, GitAPIException {
-    String version = "1.0.0";
+    String version = "1.0.1";
     String program = "DirectoryWatcher";
     System.out.println(program + " " + version );
     
     Properties prop = new Properties(); 
     prop.load(new FileInputStream("settings.properties"));
     String path = prop.getProperty("path");
-    File git_repo = new File(path+"/..");
+    File git_repo = new File(path).getParentFile();
     
     Path dir = Paths.get(path);
-    new WatchDir(dir, git_repo).processEvents();
+    new directorywatcher(dir, git_repo).processEvents();
   }
   
   private void register(Path dir) throws IOException {
@@ -85,10 +85,10 @@ public class directorywatcher {
     repositoryBuilder.findGitDir( git_repo );
     if( repositoryBuilder.getGitDir() == null ) {
       this.git = Git.init().setDirectory(git_repo).call();
-      System.out.println("Created a new repository at " + git.getRepository().getDirectory());
+      System.out.println("Created a new repository at " + git.getRepository().getDirectory().getParentFile());
     } else {
       this.git = new Git( repositoryBuilder.build() );
-      System.out.println("Opening existing repository at " + git.getRepository().getDirectory());
+      System.out.println("Opening existing repository at " + git.getRepository().getDirectory().getParentFile());
     }
     
     Runtime.getRuntime().addShutdownHook(new Thread() {

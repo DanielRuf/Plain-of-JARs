@@ -247,7 +247,7 @@ Exports an H2 database to an SQL file.
 
 
 
-![DirectoryWatcher](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) DirectoryWatcher 1.0.0
+![DirectoryWatcher](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) DirectoryWatcher 1.0.1
 =================
 
 Watches a given directory and its subdirectories for changes and commits changes to a local Git repository.
