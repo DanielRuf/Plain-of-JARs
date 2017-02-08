@@ -1,6 +1,6 @@
 /**
   *
-  * FileUploader
+  * H2SQLExport
   *
 * @version 1.0 vom 25.06.2015
   * @author Daniel Ruf
