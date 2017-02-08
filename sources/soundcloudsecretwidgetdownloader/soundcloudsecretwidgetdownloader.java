@@ -36,7 +36,7 @@ public class soundcloudsecretwidgetdownloader {
     String version = "1.0.1";
     String program = "SoundCloudSecretWidgetDownloader";
     System.out.println(program + " " + version );
-    String client_id = "02gUJC0hH2ct1EGOcYXQIzRFU91c72Ea";
+    String client_id = "fDoItMDbsbZz8dY16ZzARCZmzgHBPotA";
     int file_number = 0;
     Console console = System.console();
     String proxy_server = console.readLine("Please enter the IP of the proxy server (optional): ");
@@ -61,7 +61,7 @@ public class soundcloudsecretwidgetdownloader {
     int i=0;
     int tracks_count = tracks.length();
     while(i<tracks_count)
-    {
+      {
       file_number++;
       String username_soundcloud = tracks.getJSONObject(i).getJSONObject("user").getString("username");  
       String title_track = tracks.getJSONObject(i).getString("title");

@@ -36,7 +36,7 @@ public class soundcloudsetdownloader {
     String version = "1.3.0";
     String program = "SoundCloudSetDownloader";
     System.out.println(program + " " + version );
-    String client_id = "02gUJC0hH2ct1EGOcYXQIzRFU91c72Ea";
+    String client_id = "fDoItMDbsbZz8dY16ZzARCZmzgHBPotA";
     int file_number = 0;
     Console console = System.console();
     String proxy_server = console.readLine("Please enter the IP of the proxy server (optional): ");
@@ -81,7 +81,7 @@ public class soundcloudsetdownloader {
       int i=0;
       int current_playlists_count = playlists.length();
       while(i<current_playlists_count)
-      {
+        {
         JSONArray tracks = playlists.getJSONObject(i).getJSONArray("tracks");
         String playlist_name = playlists.getJSONObject(i).getString("title");
         String playlist_name_original = playlist_name;
@@ -95,7 +95,7 @@ public class soundcloudsetdownloader {
         int tracks_count = tracks.length();
         int j =0;
         while(j<tracks_count)
-        { 
+          { 
           file_number++;
           String username_soundcloud = tracks.getJSONObject(j).getJSONObject("user").getString("username");  
           String title_track = tracks.getJSONObject(j).getString("title");
