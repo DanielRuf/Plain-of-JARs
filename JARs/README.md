@@ -135,14 +135,14 @@ Before this, I moved the properties file and the Java file to another directory 
 
 
 
-![SoundCloudSecretWidgetDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudSecretWidgetDownloader 1.0.2
+![SoundCloudSecretWidgetDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudSecretWidgetDownloader 1.0.1
 =================
 
 Downloads all tracks from a private SoundCloud playlist, which are (mostly) not public on the SoundCloud account, can not be downloaded using the other tools and are privately shared songs which are also used in SoundCloud playlists widgets on websites.
 
 
 
-![SoundCloudPrivateTrackDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudPrivateTrackDownloader 1.0.1
+![SoundCloudPrivateTrackDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudPrivateTrackDownloader 1.0.0
 =================
 
 Downloads one private track from SoundCloud.
