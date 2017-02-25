@@ -27,23 +27,23 @@ import com.mpatric.mp3agic.UnsupportedTagException;
   *
   * SoundCloudPrivateTrackDownloader
   *
-  * @version 1.0.0 vom 28.10.2013
+  * @version 1.0.1 vom 25.02.2017
   * @author Daniel Ruf
   */
 
 public class soundcloudprivatetrackdownloader {
   public static void main(String[] args) throws Exception {
-    String version = "1.0.0";
+    String version = "1.0.1";
     String program = "SoundCloudPrivateTrackDownloader";
     System.out.println(program + " " + version );
-    String client_id = "fDoItMDbsbZz8dY16ZzARCZmzgHBPotA";
+    String client_id = "2t9loNQH90kzJcsFCODdigxfp325aq4z";
     int file_number = 0;
     Console console = System.console();
     String proxy_server = console.readLine("Please enter the IP of the proxy server (optional): ");
     String proxy_port = console.readLine("Please enter the port of the proxy server (optional): ");
     String track_id = console.readLine("Please enter the ID of the Soundcloud track: ");
     String secret_token = console.readLine("Please enter the secret token of the Soundcloud track: ");
-    HttpURLConnection conn4 = (HttpURLConnection)(new URL("https://api.soundcloud.com/tracks/"+track_id+".json?secret_token="+secret_token+"&client_id="+client_id).openConnection());
+    HttpURLConnection conn4 = (HttpURLConnection)(new URL("https://api.soundcloud.com/resolve?url=https://api.soundcloud.com/tracks/"+track_id+".json?secret_token="+secret_token+"&client_id="+client_id).openConnection());
     conn4.setConnectTimeout(60000);
     conn4.setReadTimeout(60000);
     conn4.connect();

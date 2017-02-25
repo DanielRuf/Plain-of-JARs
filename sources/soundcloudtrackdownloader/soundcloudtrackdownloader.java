@@ -27,22 +27,22 @@ import com.mpatric.mp3agic.UnsupportedTagException;
   *
   * SoundCloudTrackDownloader
   *
-  * @version 1.3.0 vom 24.10.2013
+  * @version 1.3.1 vom 25.02.2017
   * @author Daniel Ruf
   */
 
 public class soundcloudtrackdownloader {
   public static void main(String[] args) throws Exception {
-    String version = "1.3.0";
+    String version = "1.3.1";
     String program = "SoundCloudTrackDownloader";
     System.out.println(program + " " + version );
-    String client_id = "fDoItMDbsbZz8dY16ZzARCZmzgHBPotA";
+    String client_id = "2t9loNQH90kzJcsFCODdigxfp325aq4z";
     int file_number = 0;
     Console console = System.console();
     String proxy_server = console.readLine("Please enter the IP of the proxy server (optional): ");
     String proxy_port = console.readLine("Please enter the port of the proxy server (optional): ");
     String username = console.readLine("Please enter the name of the Soundcloud artist: ");
-    HttpURLConnection conn4 = (HttpURLConnection)(new URL("https://api.soundcloud.com/users/"+username+".json?client_id="+client_id).openConnection());
+    HttpURLConnection conn4 = (HttpURLConnection)(new URL("https://api.soundcloud.com/resolve?url=https://soundcloud.com/"+username+"&client_id="+client_id).openConnection());
     conn4.setConnectTimeout(60000);
     conn4.setReadTimeout(60000);
     conn4.connect();
@@ -58,12 +58,13 @@ public class soundcloudtrackdownloader {
     String user_data_string = sb2.toString();
     JSONObject user_data = new JSONObject(user_data_string);
     int tracks_count = user_data.getInt("track_count");
+    int userid = user_data.getInt("id");
     int iterations = (int) Math.ceil(tracks_count/200.0);
     int iterations_i = 0;
     while (iterations_i != iterations) {
       int limit = 200;
       int offset = iterations_i*limit;
-      HttpURLConnection conn3 = (HttpURLConnection)(new URL("https://api.soundcloud.com/users/"+username+"/tracks.json?limit="+limit+"&offset="+offset+"&client_id="+client_id).openConnection());
+      HttpURLConnection conn3 = (HttpURLConnection)(new URL("https://api.soundcloud.com/users/"+userid+"/tracks.json?limit="+limit+"&offset="+offset+"&client_id="+client_id).openConnection());
       conn3.setConnectTimeout(60000);
       conn3.setReadTimeout(60000);
       conn3.connect();

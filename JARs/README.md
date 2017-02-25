@@ -54,14 +54,14 @@ Loads the same URL in many browsers at the same time, good for side-by-side comp
 
 
 
-![SoundCloudSetDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudSetDownloader 1.3.0
+![SoundCloudSetDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudSetDownloader 1.3.1
 =================
 
 Downloads all tracks from the sets of a SoundCloud user, even the tracks which are not downloadable but buyable.
 
 
 
-![SoundCloudTrackDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudTrackDownloader 1.3.0
+![SoundCloudTrackDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudTrackDownloader 1.3.1
 =================
 
 Downloads all tracks from a SoundCloud user, which are (mostly) not in a set and even not downloadable but buyable.
@@ -135,14 +135,14 @@ Before this, I moved the properties file and the Java file to another directory 
 
 
 
-![SoundCloudSecretWidgetDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudSecretWidgetDownloader 1.0.1
+![SoundCloudSecretWidgetDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudSecretWidgetDownloader 1.0.2
 =================
 
 Downloads all tracks from a private SoundCloud playlist, which are (mostly) not public on the SoundCloud account, can not be downloaded using the other tools and are privately shared songs which are also used in SoundCloud playlists widgets on websites.
 
 
 
-![SoundCloudPrivateTrackDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudPrivateTrackDownloader 1.0.0
+![SoundCloudPrivateTrackDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudPrivateTrackDownloader 1.0.1
 =================
 
 Downloads one private track from SoundCloud.
