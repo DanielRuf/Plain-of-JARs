@@ -36,7 +36,7 @@ public class soundcloudprivatetrackdownloader {
     String version = "1.0.0";
     String program = "SoundCloudPrivateTrackDownloader";
     System.out.println(program + " " + version );
-    String client_id = "2t9loNQH90kzJcsFCODdigxfp325aq4z";
+    String client_id = "5Fs6ZkkdEgn8Ygc7xKYumtor6mrxIhb3";
     int file_number = 0;
     Console console = System.console();
     String proxy_server = console.readLine("Please enter the IP of the proxy server (optional): ");
