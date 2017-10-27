@@ -82,7 +82,7 @@ Transfers a valid and fresh edgecast download from GOG.com directly to the FTP s
 
 
 
-![FontSquirrelDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) FontSquirrelDownloader 1.0.0
+![FontSquirrelDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) FontSquirrelDownloader 1.0.1
 =================
 
 Downloads all FontSquirrel fontfacekits.

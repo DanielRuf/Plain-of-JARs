@@ -19,16 +19,16 @@ import org.json.JSONException;
   *
   * FontSquirrelDownloader
   *
-  * @version 1.0.0 vom 01.03.2013
+  * @version 1.0.1 vom 27.10.2017
   * @author Daniel Ruf
   */
 
 public class fontsquirreldownloader {
   public static void main(String[] args) throws Exception {
-    String version = "1.1.0";
+    String version = "1.0.1";
     String program = "FontSquirrelDownloader";
     System.out.println(program + " " + version );
-    URLConnection conn3 = new URL("http://www.fontsquirrel.com/api/fontlist/all").openConnection();
+    URLConnection conn3 = new URL("https://www.fontsquirrel.com/api/fontlist/all").openConnection();
     InputStream in = conn3.getInputStream();
     InputStreamReader is2 = new InputStreamReader(in);
     StringBuilder sb=new StringBuilder();
@@ -43,9 +43,9 @@ public class fontsquirreldownloader {
     int fontfacekits_count = fonts.length();
     int i=0;
     while(i<fontfacekits_count)
-    {
+      {
       String fontname = fonts.getJSONObject(i).getString("family_urlname");
-      HttpURLConnection con = (HttpURLConnection)(new URL( "http://www.fontsquirrel.com/fontfacekit/"+fontname+"" ).openConnection());
+      HttpURLConnection con = (HttpURLConnection)(new URL( "https://www.fontsquirrel.com/fontfacekit/"+fontname+"" ).openConnection());
       con.setInstanceFollowRedirects( false );
       con.connect();
       String content_length= con.getHeaderField( "content-length" );
