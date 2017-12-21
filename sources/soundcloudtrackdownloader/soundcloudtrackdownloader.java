@@ -1,6 +1,7 @@
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,16 +28,21 @@ import com.mpatric.mp3agic.UnsupportedTagException;
   *
   * SoundCloudTrackDownloader
   *
-  * @version 1.3.1 vom 25.02.2017
+  * @version 1.4.0 vom 22.12.2017
   * @author Daniel Ruf
   */
 
 public class soundcloudtrackdownloader {
   public static void main(String[] args) throws Exception {
-    String version = "1.3.1";
+    String version = "1.4.0";
     String program = "SoundCloudTrackDownloader";
     System.out.println(program + " " + version );
     String client_id = "5Fs6ZkkdEgn8Ygc7xKYumtor6mrxIhb3";
+    File config = new File("client_id.txt");
+    if(config.exists()){
+      BufferedReader configData = new BufferedReader(new FileReader("client_id.txt"));
+      client_id = configData .readLine();
+    }
     int file_number = 0;
     Console console = System.console();
     String proxy_server = console.readLine("Please enter the IP of the proxy server (optional): ");

@@ -61,7 +61,7 @@ Downloads all tracks from the sets of a SoundCloud user, even the tracks which a
 
 
 
-![SoundCloudTrackDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudTrackDownloader 1.3.1
+![SoundCloudTrackDownloader](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) SoundCloudTrackDownloader 1.4.0
 =================
 
 Downloads all tracks from a SoundCloud user, which are (mostly) not in a set and even not downloadable but buyable.
