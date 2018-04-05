@@ -106,14 +106,14 @@ Transfers valid files like setup files from websites directly to the FTP server.
 ![PDF2TXT](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) PDF2TXT 1.0.0
 =================
 
-Converts all TXT files to PDF files.
+Converts all PDF files to TXT files.
 
 
 
 ![TXT2PDF](http://p.yusukekamiyamane.com/icons/search/fugue/icons-24/jar.png) TXT2PDF 1.0.0
 =================
 
-Converts all PDF files to TXT files.
+Converts all TXT files to PDF files.
 
 
 
